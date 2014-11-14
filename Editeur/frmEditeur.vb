@@ -5,6 +5,7 @@
 '                 Location = 0;0
 '                 WordWrap = False (texte non ajusté à la dimension de la fenêtre)
 'JE CHANGE UNE LIGNE ICI
+ÔMoi aussi je change une ligne
 Imports System.IO   'Classe IO doit être ajoutée au projet pour 
                     'utiliser les classes StreamWriter (enregistrer un fichier texte)
                     'et StreamReader (lire un fichier texte)  
