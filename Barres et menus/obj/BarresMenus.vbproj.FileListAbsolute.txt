@@ -1,0 +1,10 @@
+T:\0-0-Automne 2008\TP2\Barres et menus\obj\Debug\TP2 2007.exe
+T:\0-0-Automne 2008\TP2\Barres et menus\obj\Debug\TP2 2007.xml
+T:\0-0-Automne 2008\TP2\Barres et menus\obj\Debug\TP2 2007.pdb
+T:\0-0-Automne 2008\TP2\Barres et menus\bin\TP2 2007.exe
+T:\0-0-Automne 2008\TP2\Barres et menus\bin\TP2 2007.pdb
+T:\0-0-Automne 2008\TP2\Barres et menus\bin\TP2 2007.xml
+T:\0-0-Automne 2008\TP2\Barres et menus\obj\Debug\ResolveAssemblyReference.cache
+T:\0-0-Automne 2008\TP2\Barres et menus\obj\Debug\Automne2007.frmBarresMenus.resources
+T:\0-0-Automne 2008\TP2\Barres et menus\obj\Debug\Automne2007.Resources.resources
+T:\0-0-Automne 2008\TP2\Barres et menus\obj\Debug\BarresMenus.vbproj.GenerateResource.Cache

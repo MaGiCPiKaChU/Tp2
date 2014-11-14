@@ -1,0 +1,9 @@
+obj\Debug\BoiteStandard.exe
+obj\Debug\BoiteStandard.pdb
+bin\BoiteStandard.exe
+bin\BoiteStandard.pdb
+bin\BoiteStandard.xml
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\BoiteStandard.vbproj.GenerateResource.Cache
+obj\Debug\BoiteStandard.xml
+obj\Debug\BoiteStandard.frmBoitesDialogue.resources

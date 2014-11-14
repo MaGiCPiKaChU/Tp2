@@ -1,0 +1,9 @@
+T:\0-0-Automne 2008\TP2\BoitesDialogue\obj\Debug\TP2 2007.exe
+T:\0-0-Automne 2008\TP2\BoitesDialogue\obj\Debug\TP2 2007.xml
+T:\0-0-Automne 2008\TP2\BoitesDialogue\obj\Debug\TP2 2007.pdb
+T:\0-0-Automne 2008\TP2\BoitesDialogue\bin\TP2 2007.exe
+T:\0-0-Automne 2008\TP2\BoitesDialogue\bin\TP2 2007.pdb
+T:\0-0-Automne 2008\TP2\BoitesDialogue\bin\TP2 2007.xml
+T:\0-0-Automne 2008\TP2\BoitesDialogue\obj\Debug\ResolveAssemblyReference.cache
+T:\0-0-Automne 2008\TP2\BoitesDialogue\obj\Debug\Automne2007.frmBoitesDialogue.resources
+T:\0-0-Automne 2008\TP2\BoitesDialogue\obj\Debug\BoitesDialogue.vbproj.GenerateResource.Cache

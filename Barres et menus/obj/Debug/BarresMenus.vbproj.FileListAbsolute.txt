@@ -1,0 +1,60 @@
+C:\Documents and Settings\Carole Lamontagne\Mes documents\0-Documents du Cegep\0-0-2009 Hiver\Je me souviens de mon premier cours\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.exe
+C:\Documents and Settings\Carole Lamontagne\Mes documents\0-Documents du Cegep\0-0-2009 Hiver\Je me souviens de mon premier cours\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.xml
+C:\Documents and Settings\Carole Lamontagne\Mes documents\0-Documents du Cegep\0-0-2009 Hiver\Je me souviens de mon premier cours\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.pdb
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.exe
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.xml
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.pdb
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\bin\TP2 2007.exe
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\bin\TP2 2007.pdb
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\bin\TP2 2007.xml
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\ResolveAssemblyReference.cache
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\Automne2007.frmBarresMenus.resources
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\Automne2007.Resources.resources
+T:\0-0-2009 Automne\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\BarresMenus.vbproj.GenerateResource.Cache
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.exe
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.xml
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.pdb
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\bin\TP2 2007.exe
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\bin\TP2 2007.pdb
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\bin\TP2 2007.xml
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\ResolveAssemblyReference.cache
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\Automne2007.frmBarresMenus.resources
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\Automne2007.Resources.resources
+T:\0-0-0-Automne 2010\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\BarresMenus.vbproj.GenerateResource.Cache
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.exe
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.xml
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\TP2 2007.pdb
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Préparation\Barres et menus\bin\TP2 2007.exe
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Préparation\Barres et menus\bin\TP2 2007.pdb
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Préparation\Barres et menus\bin\TP2 2007.xml
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\ResolveAssemblyReference.cache
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\Automne2007.frmBarresMenus.resources
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Préparation\Barres et menus\obj\Debug\Automne2007.Resources.resources
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Preparation\Barres et menus\obj\Debug\TP2 2007.exe
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Preparation\Barres et menus\obj\Debug\TP2 2007.xml
+T:\0-0-0-Automne 2011\POO\Travail pratique 2\TP2 Preparation\Barres et menus\obj\Debug\TP2 2007.pdb
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\obj\Debug\TP2 2007.exe
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\obj\Debug\TP2 2007.xml
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\obj\Debug\TP2 2007.pdb
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\bin\TP2 2007.exe
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\bin\TP2 2007.pdb
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\bin\TP2 2007.xml
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\obj\Debug\ResolveAssemblyReference.cache
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\obj\Debug\Automne2007.frmBarresMenus.resources
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\obj\Debug\Automne2007.Resources.resources
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\obj\Debug\ResGen.read.1.tlog
+T:\50_CoursAutomne\420-136\2012-3\09cl-tp2\TP2\Barres et menus\obj\Debug\ResGen.write.1.tlog
+I:\420-136\09cl-tp2\TP2\Barres et menus\obj\Debug\TP2 2007.exe
+I:\420-136\09cl-tp2\TP2\Barres et menus\obj\Debug\TP2 2007.xml
+I:\420-136\09cl-tp2\TP2\Barres et menus\obj\Debug\TP2 2007.pdb
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\TP2 2007.exe
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\TP2 2007.xml
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\TP2 2007.pdb
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\bin\TP2 2007.exe
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\bin\TP2 2007.pdb
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\bin\TP2 2007.xml
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\ResolveAssemblyReference.cache
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\Automne2007.frmBarresMenus.resources
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\Automne2007.Resources.resources
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\ResGen.read.1.tlog
+I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\ResGen.write.1.tlog

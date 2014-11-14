@@ -1,0 +1,10 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\BarresMenus.vbproj.GenerateResource.Cache
+bin\TP2 2007.exe
+bin\TP2 2007.pdb
+bin\TP2 2007.xml
+obj\Debug\Automne2007.frmBarresMenus.resources
+obj\Debug\Automne2007.Resources.resources
+obj\Debug\TP2 2007.exe
+obj\Debug\TP2 2007.xml
+obj\Debug\TP2 2007.pdb

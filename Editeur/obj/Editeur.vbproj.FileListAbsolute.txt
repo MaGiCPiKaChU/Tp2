@@ -1,0 +1,9 @@
+T:\0-0-Automne 2008\TP2\Editeur\bin\Travail pratique 2008.exe
+T:\0-0-Automne 2008\TP2\Editeur\bin\Travail pratique 2008.pdb
+T:\0-0-Automne 2008\TP2\Editeur\bin\Travail pratique 2008.xml
+T:\0-0-Automne 2008\TP2\Editeur\obj\Debug\ResolveAssemblyReference.cache
+T:\0-0-Automne 2008\TP2\Editeur\obj\Debug\Automne2008.frmEditeur.resources
+T:\0-0-Automne 2008\TP2\Editeur\obj\Debug\Editeur.vbproj.GenerateResource.Cache
+T:\0-0-Automne 2008\TP2\Editeur\obj\Debug\Travail pratique 2008.exe
+T:\0-0-Automne 2008\TP2\Editeur\obj\Debug\Travail pratique 2008.xml
+T:\0-0-Automne 2008\TP2\Editeur\obj\Debug\Travail pratique 2008.pdb

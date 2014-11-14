@@ -1,0 +1,9 @@
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\BoitesDialogue.vbproj.GenerateResource.Cache
+bin\TP2 2007.exe
+bin\TP2 2007.pdb
+bin\TP2 2007.xml
+obj\Debug\Automne2007.frmBoitesDialogue.resources
+obj\Debug\TP2 2007.exe
+obj\Debug\TP2 2007.xml
+obj\Debug\TP2 2007.pdb
