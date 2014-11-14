@@ -68,3 +68,6 @@ G:\420-136\2013-3\09cl-tp2\ti-public\Editeur\obj\Debug\ResGen.write.1.tlog
 I:\420-136\2013-3\09cl-tp2\ti-public\Editeur\obj\Debug\TP2.exe
 I:\420-136\2013-3\09cl-tp2\ti-public\Editeur\obj\Debug\TP2.xml
 I:\420-136\2013-3\09cl-tp2\ti-public\Editeur\obj\Debug\TP2.pdb
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Editeur\obj\Debug\TP2.exe
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Editeur\obj\Debug\TP2.xml
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Editeur\obj\Debug\TP2.pdb
