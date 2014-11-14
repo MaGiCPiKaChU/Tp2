@@ -1,11 +1,10 @@
 'Propriétés de la zone de saisie du texte : 
-'                 Anchor :top, bottom, right, left
-'                 Multiline = True
-'                 ScrollBars = Both
-'                 Location = 0;0
-'                 WordWrap = False (texte non ajusté à la dimension de la fenêtre)
-'JE CHANGE UNE LIGNE ICI
-ÔMoi aussi je change une ligne
+' ok                 Anchor :top, bottom, right, left
+' ok                 Multiline = True
+' ok                 ScrollBars = Both
+' Louche.            Location = 0;0
+' ok                 WordWrap = False (texte non ajusté à la dimension de la fenêtre)
+
 Imports System.IO   'Classe IO doit être ajoutée au projet pour 
                     'utiliser les classes StreamWriter (enregistrer un fichier texte)
                     'et StreamReader (lire un fichier texte)  
@@ -21,17 +20,32 @@ Public Class frmEditeur
   'Elle redeviendra fausse quand le texte aura été enregistré.
   'Cette variable permet d'aviser l'utilisateur qu'une modification 
   'apportée au texte n'a pas été enregistrée.
-  Private Sub txtTexte_TextChanged(ByVal sender As Object,
-                                  ByVal e As System.EventArgs) Handles txtTexte.TextChanged
-    mblnTexteModifie = True
-  End Sub
+    Private Sub rtfZoneTexte_TextChanged(ByVal sender As Object,
+                                         ByVal e As System.EventArgs)
+        mblnTexteModifie = True
+    End Sub
+    Private Sub Form_FormClosing(ByVal sender As Object,
+                                 ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Dim response As MsgBoxResult
 
-  'gestionnaire commun aux choix Nouveau, Ouvrir et Quitter :
+        If mblnTexteModifie = True Then
+            response = MsgBox("Voulez-vous enregistrer?", MsgBoxStyle.Question + MsgBoxStyle.YesNoCancel, "Confirm")
+            If response = MsgBoxResult.Yes Then
+                dlgEnregistrer.FileName = mstrNomFichier
+            ElseIf response = MsgBoxResult.No Then
+                Me.Close()
+            Else
+                response = MsgBoxResult.Cancel
+                Exit Sub
+            End If
+        End If
+    End Sub
+    'Gestionnaire commun aux choix Nouveau, Ouvrir et Quitter :
   'Dans les 3 cas, il faut s'assurer que les dernières modifications
   'apportées au texte ont été enregistrées.
-  'Prendre note que le code qui suit ne tient pas compte de la
-  'situation où l'utilisateur ferme le formulaire par le
-  'bouton Fermer (X) de la barre de titre.
+    'Prendre note que le code qui suit ne tient pas compte de la          ******** À FAIRE ********
+    'situation où l'utilisateur ferme le formulaire par le                ******** À FAIRE ********
+    'bouton Fermer (X) de la barre de titre.                              ******** À FAIRE ********
   Private Sub NouveauOuvrirQuitter(ByVal sender As System.Object,
                                     ByVal e As System.EventArgs) Handles miFichierNouveau.Click,
                                                                          miFichierOuvrir.Click,
@@ -47,11 +61,12 @@ Public Class frmEditeur
           End If
         Case Windows.Forms.DialogResult.Cancel            'aucun enregistrement si non
           Exit Sub
-      End Select
+            End Select
+
     End If
 
     If sender Is miFichierNouveau Then      'Choix Nouveau
-      txtTexte.Clear()
+            rtfZoneTexte.Clear()
       Me.Text = "Éditeur de texte"
     ElseIf sender Is miFichierQuitter Then  'Choix Quitter
       Me.Close()
@@ -64,7 +79,7 @@ Public Class frmEditeur
           If .ShowDialog = Windows.Forms.DialogResult.OK Then
             'OUVERTURE D'UN FICHIER DE TYPE TEXTE (NON FORMATÉ)
             Dim srFichier As New StreamReader(.FileName)
-            txtTexte.Text = srFichier.ReadToEnd() 'Chargement du fichier dans la zone de texte
+                        rtfZoneTexte.Text = srFichier.ReadToEnd() 'Chargement du fichier dans la zone de texte
             srFichier.Close()                     'Fermeture du fichier
             mstrNomFichier = .FileName            'nom du fichier conservé
             Me.Text = mstrNomFichier              'texte de la barre de titre du formulaire
@@ -115,7 +130,7 @@ Public Class frmEditeur
     Dim swFichier As New StreamWriter(dlgEnregistrer.FileName) 'requiert la ligne de code Imports System.IO au début du module
 
     Try
-      swFichier.Write(txtTexte.Text)          'enregistrement de tout le texte dans le fichier
+            swFichier.Write(rtfZoneTexte.Text)          'enregistrement de tout le texte dans le fichier
       swFichier.Close()                       'fermeture du fichier
     Catch ex As Exception
       MessageBox.Show("Le fichier de type texte n'a pas été enregistré." & ControlChars.NewLine &
@@ -124,7 +139,7 @@ Public Class frmEditeur
     End Try
 
     mblnTexteModifie = False                'aucune nouvelle modification
-    txtTexte.SelectionLength = 0            'désélectionner le texte
+        rtfZoneTexte.SelectionLength = 0            'désélectionner le texte
   End Sub
 
   Function MessageModification() As DialogResult
@@ -159,13 +174,13 @@ Public Class frmEditeur
     'La méthode IndexOf de la classe String recherche à partir de la position 0 
     'dans txtTexte.Text, la chaine mstrChaineRech et retourne la première position
     'où la chaîne a été trouvée. 
-    intPosition = txtTexte.Text.IndexOf(mstrChaineRech)
+        intPosition = rtfZoneTexte.Text.IndexOf(mstrChaineRech)
     If intPosition = -1 Then  'La valeur -1 est retournée si aucune occurence de la chaîne n'a été trouvée
       MessageBox.Show("Recherche infructueuse !", "Recherche")
     Else
       'Sélectionne tous les caractères (Length) de la chaine trouvée dans le texte 
       'à partir de sa position de départ.
-      txtTexte.Select(intPosition, mstrChaineRech.Length)
+            rtfZoneTexte.Select(intPosition, mstrChaineRech.Length)
       'Active le choix Rechercher le suivant au menu
       miEditionRechercherSuiv.Enabled = True
     End If
@@ -182,14 +197,14 @@ Public Class frmEditeur
     'La prochaine recherche doit débuter à la position qui suit le
     'début du texte sélectionné (txtTexte.SelectionStart + 1)
     'Le dernier argument permet d'ignorer la casse lors de la recherche
-    intPosition = txtTexte.Text.IndexOf(mstrChaineRech, txtTexte.SelectionStart + 1,
+        intPosition = rtfZoneTexte.Text.IndexOf(mstrChaineRech, rtfZoneTexte.SelectionStart + 1,
                                         System.StringComparison.CurrentCultureIgnoreCase)
     If intPosition = -1 Then
       MessageBox.Show("La recherche est terminée.", "Rechercher le suivant")
       miEditionRechercherSuiv.Enabled = False
     Else
       'Sélectionne la chaîne suivante dans le texte
-      txtTexte.Select(intPosition, mstrChaineRech.Length)
+            rtfZoneTexte.Select(intPosition, mstrChaineRech.Length)
     End If
   End Sub
 
@@ -199,7 +214,7 @@ Public Class frmEditeur
     'Cocher ou décocher le choix dans le menu
     miFormatRetourAutomatique.Checked = Not miFormatRetourAutomatique.Checked
     'Ajuste ou non la longueur des lignes à la largeur du formulaire
-    txtTexte.WordWrap = Not txtTexte.WordWrap
+        rtfZoneTexte.WordWrap = Not rtfZoneTexte.WordWrap
   End Sub
 
   'Ajout d'un contrôle FontDialog au formulaire nommé dlgPolice
@@ -208,12 +223,12 @@ Public Class frmEditeur
 
     With dlgPolice
       .ShowColor = True                       'ajoute le choix Couleur (peut être fait en Design)
-      .Font = txtTexte.Font                   'affecte à la boîte de dialogue la police et la couleur du texte
-      .Color = txtTexte.ForeColor
+            .Font = rtfZoneTexte.Font                   'affecte à la boîte de dialogue la police et la couleur du texte
+            .Color = rtfZoneTexte.ForeColor
       Try
         If .ShowDialog = Windows.Forms.DialogResult.OK Then   'affichage de la boîte Police
-          txtTexte.Font = .Font               'police affectée à tout le texte
-          txtTexte.ForeColor = .Color         'couleur affectée à tout le texte
+                    rtfZoneTexte.Font = .Font               'police affectée à tout le texte
+                    rtfZoneTexte.ForeColor = .Color         'couleur affectée à tout le texte
         End If
       Catch ex As Exception
         MessageBox.Show("La police de caractères n'a pu être modifiée." & ControlChars.NewLine &
@@ -227,4 +242,13 @@ Public Class frmEditeur
                                       ByVal e As System.EventArgs) Handles miFichierImprimer.Click
     'Voir projet BoitesDialogue
   End Sub
+
+    Private Sub btnAjouterDate_Click(sender As Object,
+                                     e As EventArgs)
+
+    End Sub
+
+    Private Sub frmEditeur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
