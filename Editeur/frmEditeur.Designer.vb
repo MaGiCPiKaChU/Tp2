@@ -33,31 +33,46 @@ Partial Class frmEditeur
         Me.miFichierEnregistrer = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFichierEnregSous = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.miFichierApercu = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFichierImprimer = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
         Me.miFichierQuitter = New System.Windows.Forms.ToolStripMenuItem()
         Me.miEdition = New System.Windows.Forms.ToolStripMenuItem()
         Me.miEditionRechercher = New System.Windows.Forms.ToolStripMenuItem()
         Me.miEditionRechercherSuiv = New System.Windows.Forms.ToolStripMenuItem()
+        Me.miEditionMiseEnPage = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFormat = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFormatRetourAutomatique = New System.Windows.Forms.ToolStripMenuItem()
+        Me.miFormatCouleur = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFormatPolice = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnRefaire = New System.Windows.Forms.Button()
-        Me.btnAnnuler = New System.Windows.Forms.Button()
-        Me.btnColler = New System.Windows.Forms.Button()
-        Me.BtnCopier = New System.Windows.Forms.Button()
-        Me.btnCouper = New System.Windows.Forms.Button()
-        Me.btnZoomMax = New System.Windows.Forms.Button()
-        Me.BtnZoomMin = New System.Windows.Forms.Button()
-        Me.btnRechercher = New System.Windows.Forms.Button()
-        Me.btnImprimer = New System.Windows.Forms.Button()
-        Me.btnEnregistrer = New System.Windows.Forms.Button()
-        Me.btnOuvrir = New System.Windows.Forms.Button()
-        Me.btnNouveau = New System.Windows.Forms.Button()
-        Me.btnRenvoiLigne = New System.Windows.Forms.Button()
         Me.rtfZoneTexte = New System.Windows.Forms.RichTextBox()
+        Me.dlgCouleur = New System.Windows.Forms.ColorDialog()
+        Me.dlgApercu = New System.Windows.Forms.PrintPreviewDialog()
+        Me.dlgMiseEnPage = New System.Windows.Forms.PageSetupDialog()
+        Me.ssBarreEtat = New System.Windows.Forms.StatusStrip()
+        Me.ssTaille = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ssDate = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tsBarreOutils = New System.Windows.Forms.ToolStrip()
+        Me.btnNouveau = New System.Windows.Forms.ToolStripButton()
+        Me.btnOuvrir = New System.Windows.Forms.ToolStripButton()
+        Me.btnEnregistrer = New System.Windows.Forms.ToolStripButton()
+        Me.btnImprimer = New System.Windows.Forms.ToolStripButton()
+        Me.btnRechercher = New System.Windows.Forms.ToolStripButton()
+        Me.btnCouper = New System.Windows.Forms.ToolStripButton()
+        Me.btnCopier = New System.Windows.Forms.ToolStripButton()
+        Me.btnColler = New System.Windows.Forms.ToolStripButton()
+        Me.btnRetourLigne = New System.Windows.Forms.ToolStripButton()
+        Me.btnAnnuler = New System.Windows.Forms.ToolStripButton()
+        Me.btnRefaire = New System.Windows.Forms.ToolStripButton()
+        Me.btnGras = New System.Windows.Forms.ToolStripButton()
+        Me.btnItalic = New System.Windows.Forms.ToolStripButton()
         Me.msBarreMenu.SuspendLayout()
+        Me.ssBarreEtat.SuspendLayout()
+        Me.tsBarreOutils.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'prtDocument
+        '
         '
         'msBarreMenu
         '
@@ -70,7 +85,7 @@ Partial Class frmEditeur
         '
         'miFichier
         '
-        Me.miFichier.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFichierNouveau, Me.miFichierOuvrir, Me.ToolStripMenuItem1, Me.miFichierEnregistrer, Me.miFichierEnregSous, Me.ToolStripMenuItem2, Me.miFichierImprimer, Me.ToolStripMenuItem3, Me.miFichierQuitter})
+        Me.miFichier.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFichierNouveau, Me.miFichierOuvrir, Me.ToolStripMenuItem1, Me.miFichierEnregistrer, Me.miFichierEnregSous, Me.ToolStripMenuItem2, Me.miFichierApercu, Me.miFichierImprimer, Me.ToolStripMenuItem3, Me.miFichierQuitter})
         Me.miFichier.Name = "miFichier"
         Me.miFichier.Size = New System.Drawing.Size(54, 20)
         Me.miFichier.Text = "&Fichier"
@@ -109,9 +124,14 @@ Partial Class frmEditeur
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
         Me.ToolStripMenuItem2.Size = New System.Drawing.Size(163, 6)
         '
+        'miFichierApercu
+        '
+        Me.miFichierApercu.Name = "miFichierApercu"
+        Me.miFichierApercu.Size = New System.Drawing.Size(166, 22)
+        Me.miFichierApercu.Text = "Aperçu"
+        '
         'miFichierImprimer
         '
-        Me.miFichierImprimer.Enabled = False
         Me.miFichierImprimer.Name = "miFichierImprimer"
         Me.miFichierImprimer.Size = New System.Drawing.Size(166, 22)
         Me.miFichierImprimer.Text = "&Imprimer..."
@@ -129,7 +149,7 @@ Partial Class frmEditeur
         '
         'miEdition
         '
-        Me.miEdition.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miEditionRechercher, Me.miEditionRechercherSuiv})
+        Me.miEdition.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miEditionRechercher, Me.miEditionRechercherSuiv, Me.miEditionMiseEnPage})
         Me.miEdition.Name = "miEdition"
         Me.miEdition.Size = New System.Drawing.Size(56, 20)
         Me.miEdition.Text = "&Edition"
@@ -146,9 +166,15 @@ Partial Class frmEditeur
         Me.miEditionRechercherSuiv.Size = New System.Drawing.Size(186, 22)
         Me.miEditionRechercherSuiv.Text = "Rechercher le suivant"
         '
+        'miEditionMiseEnPage
+        '
+        Me.miEditionMiseEnPage.Name = "miEditionMiseEnPage"
+        Me.miEditionMiseEnPage.Size = New System.Drawing.Size(186, 22)
+        Me.miEditionMiseEnPage.Text = "Mise en page"
+        '
         'miFormat
         '
-        Me.miFormat.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFormatRetourAutomatique, Me.miFormatPolice})
+        Me.miFormat.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFormatRetourAutomatique, Me.miFormatCouleur, Me.miFormatPolice})
         Me.miFormat.Name = "miFormat"
         Me.miFormat.Size = New System.Drawing.Size(57, 20)
         Me.miFormat.Text = "F&ormat"
@@ -159,173 +185,182 @@ Partial Class frmEditeur
         Me.miFormatRetourAutomatique.Size = New System.Drawing.Size(230, 22)
         Me.miFormatRetourAutomatique.Text = "&Retour automatique à la ligne"
         '
+        'miFormatCouleur
+        '
+        Me.miFormatCouleur.Name = "miFormatCouleur"
+        Me.miFormatCouleur.Size = New System.Drawing.Size(230, 22)
+        Me.miFormatCouleur.Text = "Couleur de texte"
+        '
         'miFormatPolice
         '
         Me.miFormatPolice.Name = "miFormatPolice"
         Me.miFormatPolice.Size = New System.Drawing.Size(230, 22)
         Me.miFormatPolice.Text = "&Police..."
         '
-        'btnRefaire
-        '
-        Me.btnRefaire.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRefaire.Image = CType(resources.GetObject("btnRefaire.Image"), System.Drawing.Image)
-        Me.btnRefaire.Location = New System.Drawing.Point(457, 35)
-        Me.btnRefaire.Name = "btnRefaire"
-        Me.btnRefaire.Size = New System.Drawing.Size(31, 26)
-        Me.btnRefaire.TabIndex = 28
-        Me.btnRefaire.UseVisualStyleBackColor = True
-        '
-        'btnAnnuler
-        '
-        Me.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAnnuler.Image = CType(resources.GetObject("btnAnnuler.Image"), System.Drawing.Image)
-        Me.btnAnnuler.Location = New System.Drawing.Point(420, 35)
-        Me.btnAnnuler.Name = "btnAnnuler"
-        Me.btnAnnuler.Size = New System.Drawing.Size(31, 26)
-        Me.btnAnnuler.TabIndex = 27
-        Me.btnAnnuler.UseVisualStyleBackColor = True
-        '
-        'btnColler
-        '
-        Me.btnColler.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnColler.Image = CType(resources.GetObject("btnColler.Image"), System.Drawing.Image)
-        Me.btnColler.Location = New System.Drawing.Point(346, 35)
-        Me.btnColler.Name = "btnColler"
-        Me.btnColler.Size = New System.Drawing.Size(31, 26)
-        Me.btnColler.TabIndex = 26
-        Me.btnColler.UseVisualStyleBackColor = True
-        '
-        'BtnCopier
-        '
-        Me.BtnCopier.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnCopier.Image = CType(resources.GetObject("BtnCopier.Image"), System.Drawing.Image)
-        Me.BtnCopier.Location = New System.Drawing.Point(309, 35)
-        Me.BtnCopier.Name = "BtnCopier"
-        Me.BtnCopier.Size = New System.Drawing.Size(31, 26)
-        Me.BtnCopier.TabIndex = 25
-        Me.BtnCopier.UseVisualStyleBackColor = True
-        '
-        'btnCouper
-        '
-        Me.btnCouper.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCouper.Image = CType(resources.GetObject("btnCouper.Image"), System.Drawing.Image)
-        Me.btnCouper.Location = New System.Drawing.Point(272, 35)
-        Me.btnCouper.Name = "btnCouper"
-        Me.btnCouper.Size = New System.Drawing.Size(31, 26)
-        Me.btnCouper.TabIndex = 24
-        Me.btnCouper.UseVisualStyleBackColor = True
-        '
-        'btnZoomMax
-        '
-        Me.btnZoomMax.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnZoomMax.Image = CType(resources.GetObject("btnZoomMax.Image"), System.Drawing.Image)
-        Me.btnZoomMax.Location = New System.Drawing.Point(234, 35)
-        Me.btnZoomMax.Name = "btnZoomMax"
-        Me.btnZoomMax.Size = New System.Drawing.Size(31, 26)
-        Me.btnZoomMax.TabIndex = 23
-        Me.btnZoomMax.UseVisualStyleBackColor = True
-        '
-        'BtnZoomMin
-        '
-        Me.BtnZoomMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnZoomMin.Image = CType(resources.GetObject("BtnZoomMin.Image"), System.Drawing.Image)
-        Me.BtnZoomMin.Location = New System.Drawing.Point(197, 35)
-        Me.BtnZoomMin.Name = "BtnZoomMin"
-        Me.BtnZoomMin.Size = New System.Drawing.Size(31, 26)
-        Me.BtnZoomMin.TabIndex = 22
-        Me.BtnZoomMin.UseVisualStyleBackColor = True
-        '
-        'btnRechercher
-        '
-        Me.btnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRechercher.Image = CType(resources.GetObject("btnRechercher.Image"), System.Drawing.Image)
-        Me.btnRechercher.Location = New System.Drawing.Point(159, 35)
-        Me.btnRechercher.Name = "btnRechercher"
-        Me.btnRechercher.Size = New System.Drawing.Size(31, 26)
-        Me.btnRechercher.TabIndex = 21
-        Me.btnRechercher.UseVisualStyleBackColor = True
-        '
-        'btnImprimer
-        '
-        Me.btnImprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnImprimer.Image = CType(resources.GetObject("btnImprimer.Image"), System.Drawing.Image)
-        Me.btnImprimer.Location = New System.Drawing.Point(121, 35)
-        Me.btnImprimer.Name = "btnImprimer"
-        Me.btnImprimer.Size = New System.Drawing.Size(31, 26)
-        Me.btnImprimer.TabIndex = 20
-        Me.btnImprimer.UseVisualStyleBackColor = True
-        '
-        'btnEnregistrer
-        '
-        Me.btnEnregistrer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnEnregistrer.Image = CType(resources.GetObject("btnEnregistrer.Image"), System.Drawing.Image)
-        Me.btnEnregistrer.Location = New System.Drawing.Point(85, 35)
-        Me.btnEnregistrer.Name = "btnEnregistrer"
-        Me.btnEnregistrer.Size = New System.Drawing.Size(31, 26)
-        Me.btnEnregistrer.TabIndex = 19
-        Me.btnEnregistrer.UseVisualStyleBackColor = True
-        '
-        'btnOuvrir
-        '
-        Me.btnOuvrir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnOuvrir.Image = CType(resources.GetObject("btnOuvrir.Image"), System.Drawing.Image)
-        Me.btnOuvrir.Location = New System.Drawing.Point(48, 35)
-        Me.btnOuvrir.Name = "btnOuvrir"
-        Me.btnOuvrir.Size = New System.Drawing.Size(31, 26)
-        Me.btnOuvrir.TabIndex = 18
-        Me.btnOuvrir.UseVisualStyleBackColor = True
-        '
-        'btnNouveau
-        '
-        Me.btnNouveau.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNouveau.Image = CType(resources.GetObject("btnNouveau.Image"), System.Drawing.Image)
-        Me.btnNouveau.Location = New System.Drawing.Point(10, 35)
-        Me.btnNouveau.Name = "btnNouveau"
-        Me.btnNouveau.Size = New System.Drawing.Size(31, 26)
-        Me.btnNouveau.TabIndex = 17
-        Me.btnNouveau.UseVisualStyleBackColor = True
-        '
-        'btnRenvoiLigne
-        '
-        Me.btnRenvoiLigne.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnRenvoiLigne.Image = CType(resources.GetObject("btnRenvoiLigne.Image"), System.Drawing.Image)
-        Me.btnRenvoiLigne.Location = New System.Drawing.Point(383, 35)
-        Me.btnRenvoiLigne.Name = "btnRenvoiLigne"
-        Me.btnRenvoiLigne.Size = New System.Drawing.Size(31, 26)
-        Me.btnRenvoiLigne.TabIndex = 29
-        Me.btnRenvoiLigne.UseVisualStyleBackColor = True
-        '
         'rtfZoneTexte
         '
         Me.rtfZoneTexte.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.rtfZoneTexte.Location = New System.Drawing.Point(13, 68)
+        Me.rtfZoneTexte.Location = New System.Drawing.Point(0, 52)
         Me.rtfZoneTexte.Name = "rtfZoneTexte"
-        Me.rtfZoneTexte.Size = New System.Drawing.Size(894, 471)
+        Me.rtfZoneTexte.Size = New System.Drawing.Size(919, 474)
         Me.rtfZoneTexte.TabIndex = 30
         Me.rtfZoneTexte.Text = ""
         Me.rtfZoneTexte.WordWrap = False
+        '
+        'dlgApercu
+        '
+        Me.dlgApercu.AutoScrollMargin = New System.Drawing.Size(0, 0)
+        Me.dlgApercu.AutoScrollMinSize = New System.Drawing.Size(0, 0)
+        Me.dlgApercu.ClientSize = New System.Drawing.Size(400, 300)
+        Me.dlgApercu.Enabled = True
+        Me.dlgApercu.Icon = CType(resources.GetObject("dlgApercu.Icon"), System.Drawing.Icon)
+        Me.dlgApercu.Name = "dlgApercu"
+        Me.dlgApercu.Visible = False
+        '
+        'ssBarreEtat
+        '
+        Me.ssBarreEtat.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ssTaille, Me.ssDate})
+        Me.ssBarreEtat.Location = New System.Drawing.Point(0, 529)
+        Me.ssBarreEtat.Name = "ssBarreEtat"
+        Me.ssBarreEtat.Size = New System.Drawing.Size(919, 22)
+        Me.ssBarreEtat.TabIndex = 0
+        Me.ssBarreEtat.Text = "StatusStrip1"
+        '
+        'ssTaille
+        '
+        Me.ssTaille.Name = "ssTaille"
+        Me.ssTaille.Size = New System.Drawing.Size(80, 17)
+        Me.ssTaille.Text = "Taille : 0 octet"
+        '
+        'ssDate
+        '
+        Me.ssDate.Name = "ssDate"
+        Me.ssDate.Size = New System.Drawing.Size(94, 17)
+        Me.ssDate.Text = "Date du système"
+        '
+        'tsBarreOutils
+        '
+        Me.tsBarreOutils.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNouveau, Me.btnOuvrir, Me.btnEnregistrer, Me.btnImprimer, Me.btnRechercher, Me.btnCouper, Me.btnCopier, Me.btnColler, Me.btnRetourLigne, Me.btnAnnuler, Me.btnRefaire, Me.btnGras, Me.btnItalic})
+        Me.tsBarreOutils.Location = New System.Drawing.Point(0, 24)
+        Me.tsBarreOutils.Name = "tsBarreOutils"
+        Me.tsBarreOutils.Size = New System.Drawing.Size(919, 25)
+        Me.tsBarreOutils.TabIndex = 33
+        Me.tsBarreOutils.Text = "ToolStrip1"
+        '
+        'btnNouveau
+        '
+        Me.btnNouveau.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnNouveau.Image = CType(resources.GetObject("btnNouveau.Image"), System.Drawing.Image)
+        Me.btnNouveau.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNouveau.Name = "btnNouveau"
+        Me.btnNouveau.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnOuvrir
+        '
+        Me.btnOuvrir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnOuvrir.Image = CType(resources.GetObject("btnOuvrir.Image"), System.Drawing.Image)
+        Me.btnOuvrir.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnOuvrir.Name = "btnOuvrir"
+        Me.btnOuvrir.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnEnregistrer
+        '
+        Me.btnEnregistrer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnEnregistrer.Image = CType(resources.GetObject("btnEnregistrer.Image"), System.Drawing.Image)
+        Me.btnEnregistrer.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnEnregistrer.Name = "btnEnregistrer"
+        Me.btnEnregistrer.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnImprimer
+        '
+        Me.btnImprimer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnImprimer.Image = CType(resources.GetObject("btnImprimer.Image"), System.Drawing.Image)
+        Me.btnImprimer.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnImprimer.Name = "btnImprimer"
+        Me.btnImprimer.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnRechercher
+        '
+        Me.btnRechercher.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnRechercher.Image = CType(resources.GetObject("btnRechercher.Image"), System.Drawing.Image)
+        Me.btnRechercher.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnRechercher.Name = "btnRechercher"
+        Me.btnRechercher.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnCouper
+        '
+        Me.btnCouper.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnCouper.Image = CType(resources.GetObject("btnCouper.Image"), System.Drawing.Image)
+        Me.btnCouper.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnCouper.Name = "btnCouper"
+        Me.btnCouper.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnCopier
+        '
+        Me.btnCopier.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnCopier.Image = CType(resources.GetObject("btnCopier.Image"), System.Drawing.Image)
+        Me.btnCopier.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnCopier.Name = "btnCopier"
+        Me.btnCopier.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnColler
+        '
+        Me.btnColler.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnColler.Image = CType(resources.GetObject("btnColler.Image"), System.Drawing.Image)
+        Me.btnColler.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnColler.Name = "btnColler"
+        Me.btnColler.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnRetourLigne
+        '
+        Me.btnRetourLigne.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnRetourLigne.Image = CType(resources.GetObject("btnRetourLigne.Image"), System.Drawing.Image)
+        Me.btnRetourLigne.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnRetourLigne.Name = "btnRetourLigne"
+        Me.btnRetourLigne.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnAnnuler
+        '
+        Me.btnAnnuler.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnAnnuler.Image = CType(resources.GetObject("btnAnnuler.Image"), System.Drawing.Image)
+        Me.btnAnnuler.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnAnnuler.Name = "btnAnnuler"
+        Me.btnAnnuler.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnRefaire
+        '
+        Me.btnRefaire.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnRefaire.Image = CType(resources.GetObject("btnRefaire.Image"), System.Drawing.Image)
+        Me.btnRefaire.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnRefaire.Name = "btnRefaire"
+        Me.btnRefaire.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnGras
+        '
+        Me.btnGras.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnGras.Image = CType(resources.GetObject("btnGras.Image"), System.Drawing.Image)
+        Me.btnGras.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnGras.Name = "btnGras"
+        Me.btnGras.Size = New System.Drawing.Size(23, 22)
+        '
+        'btnItalic
+        '
+        Me.btnItalic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnItalic.Image = CType(resources.GetObject("btnItalic.Image"), System.Drawing.Image)
+        Me.btnItalic.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnItalic.Name = "btnItalic"
+        Me.btnItalic.Size = New System.Drawing.Size(23, 22)
         '
         'frmEditeur
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(919, 551)
+        Me.Controls.Add(Me.tsBarreOutils)
+        Me.Controls.Add(Me.ssBarreEtat)
         Me.Controls.Add(Me.rtfZoneTexte)
-        Me.Controls.Add(Me.btnRenvoiLigne)
-        Me.Controls.Add(Me.btnRefaire)
-        Me.Controls.Add(Me.btnAnnuler)
-        Me.Controls.Add(Me.btnColler)
-        Me.Controls.Add(Me.BtnCopier)
-        Me.Controls.Add(Me.btnCouper)
-        Me.Controls.Add(Me.btnZoomMax)
-        Me.Controls.Add(Me.BtnZoomMin)
-        Me.Controls.Add(Me.btnRechercher)
-        Me.Controls.Add(Me.btnImprimer)
-        Me.Controls.Add(Me.btnEnregistrer)
-        Me.Controls.Add(Me.btnOuvrir)
-        Me.Controls.Add(Me.btnNouveau)
         Me.Controls.Add(Me.msBarreMenu)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.msBarreMenu
@@ -334,6 +369,10 @@ Partial Class frmEditeur
         Me.Text = "Éditeur de texte style Bloc-Notes"
         Me.msBarreMenu.ResumeLayout(False)
         Me.msBarreMenu.PerformLayout()
+        Me.ssBarreEtat.ResumeLayout(False)
+        Me.ssBarreEtat.PerformLayout()
+        Me.tsBarreOutils.ResumeLayout(False)
+        Me.tsBarreOutils.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -360,18 +399,28 @@ Partial Class frmEditeur
     Friend WithEvents miFormat As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents miFormatPolice As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents miFormatRetourAutomatique As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents btnRefaire As System.Windows.Forms.Button
-    Friend WithEvents btnAnnuler As System.Windows.Forms.Button
-    Friend WithEvents btnColler As System.Windows.Forms.Button
-    Friend WithEvents BtnCopier As System.Windows.Forms.Button
-    Friend WithEvents btnCouper As System.Windows.Forms.Button
-    Friend WithEvents btnZoomMax As System.Windows.Forms.Button
-    Friend WithEvents BtnZoomMin As System.Windows.Forms.Button
-    Friend WithEvents btnRechercher As System.Windows.Forms.Button
-    Friend WithEvents btnImprimer As System.Windows.Forms.Button
-    Friend WithEvents btnEnregistrer As System.Windows.Forms.Button
-    Friend WithEvents btnOuvrir As System.Windows.Forms.Button
-    Friend WithEvents btnNouveau As System.Windows.Forms.Button
-    Friend WithEvents btnRenvoiLigne As System.Windows.Forms.Button
     Friend WithEvents rtfZoneTexte As System.Windows.Forms.RichTextBox
+    Friend WithEvents miFichierApercu As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents miEditionMiseEnPage As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents miFormatCouleur As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents dlgCouleur As System.Windows.Forms.ColorDialog
+    Friend WithEvents dlgApercu As System.Windows.Forms.PrintPreviewDialog
+    Friend WithEvents dlgMiseEnPage As System.Windows.Forms.PageSetupDialog
+    Friend WithEvents ssBarreEtat As System.Windows.Forms.StatusStrip
+    Friend WithEvents ssTaille As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ssDate As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents tsBarreOutils As System.Windows.Forms.ToolStrip
+    Friend WithEvents btnNouveau As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnOuvrir As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnEnregistrer As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnImprimer As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnCouper As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnCopier As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnColler As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnRetourLigne As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnAnnuler As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnRefaire As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnGras As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnItalic As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnRechercher As System.Windows.Forms.ToolStripButton
 End Class

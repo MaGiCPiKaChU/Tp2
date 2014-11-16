@@ -58,3 +58,12 @@ I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\Automne2007.frmBa
 I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\Automne2007.Resources.resources
 I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\ResGen.read.1.tlog
 I:\420-136\2013-3\09cl-tp2\ti-public\Barres et menus\obj\Debug\ResGen.write.1.tlog
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Barres et menus\obj\Debug\TP2 2007.exe
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Barres et menus\obj\Debug\TP2 2007.xml
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Barres et menus\obj\Debug\TP2 2007.pdb
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Barres et menus\bin\TP2 2007.exe
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Barres et menus\bin\TP2 2007.pdb
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Barres et menus\bin\TP2 2007.xml
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Barres et menus\obj\Debug\Automne2007.frmBarresMenus.resources
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Barres et menus\obj\Debug\Automne2007.Resources.resources
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Barres et menus\obj\Debug\BarresMenus.vbproj.GenerateResource.Cache

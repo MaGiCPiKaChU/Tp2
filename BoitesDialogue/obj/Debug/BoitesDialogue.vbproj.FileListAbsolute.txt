@@ -69,3 +69,11 @@ G:\420-136\2013-3\09cl-tp2\ti-public\BoitesDialogue\obj\Debug\ResolveAssemblyRef
 G:\420-136\2013-3\09cl-tp2\ti-public\BoitesDialogue\obj\Debug\Automne2007.frmBoitesDialogue.resources
 G:\420-136\2013-3\09cl-tp2\ti-public\BoitesDialogue\obj\Debug\ResGen.read.1.tlog
 G:\420-136\2013-3\09cl-tp2\ti-public\BoitesDialogue\obj\Debug\ResGen.write.1.tlog
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\BoitesDialogue\obj\Debug\TP2 2007.exe
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\BoitesDialogue\obj\Debug\TP2 2007.xml
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\BoitesDialogue\obj\Debug\TP2 2007.pdb
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\BoitesDialogue\bin\TP2 2007.exe
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\BoitesDialogue\bin\TP2 2007.pdb
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\BoitesDialogue\bin\TP2 2007.xml
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\BoitesDialogue\obj\Debug\Automne2007.frmBoitesDialogue.resources
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\BoitesDialogue\obj\Debug\BoitesDialogue.vbproj.GenerateResource.Cache

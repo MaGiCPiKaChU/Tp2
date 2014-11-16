@@ -19,13 +19,11 @@ Public Class frmEditeur
   'A chaque fois que le texte est modifié la variable mblnTexteModifie devient vraie.
   'Elle redeviendra fausse quand le texte aura été enregistré.
   'Cette variable permet d'aviser l'utilisateur qu'une modification 
-  'apportée au texte n'a pas été enregistrée.
-    Private Sub rtfZoneTexte_TextChanged(ByVal sender As Object,
-                                         ByVal e As System.EventArgs)
-        mblnTexteModifie = True
-    End Sub
+    'apportée au texte n'a pas été enregistrée.
+
     Private Sub Form_FormClosing(ByVal sender As Object,
                                  ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+
         Dim response As MsgBoxResult
 
         If mblnTexteModifie = True Then
@@ -43,212 +41,345 @@ Public Class frmEditeur
     'Gestionnaire commun aux choix Nouveau, Ouvrir et Quitter :
   'Dans les 3 cas, il faut s'assurer que les dernières modifications
   'apportées au texte ont été enregistrées.
-    'Prendre note que le code qui suit ne tient pas compte de la          ******** À FAIRE ********
+    'Prendre note que le code qui suit ne tient pas compte de la          ******** À FAIRE ******** L24 à 40
     'situation où l'utilisateur ferme le formulaire par le                ******** À FAIRE ********
     'bouton Fermer (X) de la barre de titre.                              ******** À FAIRE ********
-  Private Sub NouveauOuvrirQuitter(ByVal sender As System.Object,
-                                    ByVal e As System.EventArgs) Handles miFichierNouveau.Click,
-                                                                         miFichierOuvrir.Click,
-                                                                         miFichierQuitter.Click
+    Private Sub NouveauOuvrirQuitter(ByVal sender As System.Object,
+                                      ByVal e As System.EventArgs) Handles miFichierNouveau.Click,
+                                                                           btnNouveau.Click,
+                                                                           miFichierOuvrir.Click,
+                                                                           btnOuvrir.Click,
+                                                                           miFichierQuitter.Click
 
-    If mblnTexteModifie = True Then       'Si des modifications n'ont pas été enregistrées
-      mdrReponse = MessageModification()  'Affichage d'un message
-      Select Case mdrReponse
-        Case Windows.Forms.DialogResult.Yes     'Enregistrement si oui
-          EnregistrerClick(sender, e)
-          If mblnAnnulerEnreg = True Then   'Si l'utilisateur a annulé l'enregistrement par le bouton Annuler
-            Exit Sub                        'dans la boite de dialogue Enregistrer, sortie de la procédure.
-          End If
-        Case Windows.Forms.DialogResult.Cancel            'aucun enregistrement si non
-          Exit Sub
+
+        If mblnTexteModifie = True Then       'Si des modifications n'ont pas été enregistrées
+            mdrReponse = MessageModification()  'Affichage d'un message
+            Select Case mdrReponse
+                Case Windows.Forms.DialogResult.Yes     'Enregistrement si oui
+                    EnregistrerClick(sender, e)
+                    If mblnAnnulerEnreg = True Then   'Si l'utilisateur a annulé l'enregistrement par le bouton Annuler
+                        Exit Sub                        'dans la boite de dialogue Enregistrer, sortie de la procédure.
+                    End If
+                Case Windows.Forms.DialogResult.Cancel            'aucun enregistrement si non
+                    Exit Sub
             End Select
 
-    End If
-
-    If sender Is miFichierNouveau Then      'Choix Nouveau
-            rtfZoneTexte.Clear()
-      Me.Text = "Éditeur de texte"
-    ElseIf sender Is miFichierQuitter Then  'Choix Quitter
-      Me.Close()
-    Else                                    'Choix Ouvrir
-      With dlgOuvrir
-        .CheckFileExists = True             'avertissement si le fichier n'existe pas
-        '2 choix affichés dnas la zone Type de la boîte de dialogue (*.txt et *.*)
-        .Filter = "Fichiers texte (*.txt)|*.txt|Tous les fichiers (*.*)|*.*"
-        Try
-          If .ShowDialog = Windows.Forms.DialogResult.OK Then
-            'OUVERTURE D'UN FICHIER DE TYPE TEXTE (NON FORMATÉ)
-            Dim srFichier As New StreamReader(.FileName)
-                        rtfZoneTexte.Text = srFichier.ReadToEnd() 'Chargement du fichier dans la zone de texte
-            srFichier.Close()                     'Fermeture du fichier
-            mstrNomFichier = .FileName            'nom du fichier conservé
-            Me.Text = mstrNomFichier              'texte de la barre de titre du formulaire
-          End If
-        Catch ex As Exception
-          MessageBox.Show("Le fichier spécifié n'a pu être ouvert." & ControlChars.NewLine &
-                          "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
-                          "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
-        End Try
-      End With
-
-      dlgEnregistrer.FileName = mstrNomFichier
-    End If
-
-    mblnTexteModifie = False  'aucune nouvelle modification
-  End Sub
-
-  'Procédure commune aux choix Enregistrer et Enregistrer sous 
-  Private Sub EnregistrerClick(ByVal sender As System.Object,
-                               ByVal e As System.EventArgs) Handles miFichierEnregistrer.Click,
-                                                                    miFichierEnregSous.Click
-    With dlgEnregistrer
-      'Si le texte n'a jamais été enregistré, il faut demander le nom et 
-      'chemin du fichier dans la boite de dialogue.  Si le choix est Enregistrer sous,
-      'il faut aussi afficher la boite de dialogue.
-      If Me.Text <> mstrNomFichier Or sender Is miFichierEnregSous Then
-        .Title = "Enregistrer un fichier texte"         'titre de la boîte de dialogue
-        .DefaultExt = "txt"                             'extension par défaut 
-        .Filter = "Fichier texte (*.txt)|*.txt"         'contenu de la case Type de la boîte de dialogue
-        .OverwritePrompt = True                         'avertissement si le fichier existe déjà
-        If .ShowDialog = Windows.Forms.DialogResult.OK Then
-          Enregistrement()
-          mstrNomFichier = .FileName
-          Me.Text = mstrNomFichier        'nom du fichier dans la barre de titre de l'éditeur
-          mblnAnnulerEnreg = False        'Bouton Annuler n'a pas été sélectionné
-        Else
-          mblnAnnulerEnreg = True         'Bouton Annuler a été sélectionné
         End If
-      Else
-        'Si le texte a déjà été enregistré, inutile de demander le nom et le chemin dans la boite de dialogue Enregistrer
-        Enregistrement()
-      End If
-    End With
-  End Sub
 
-  Sub Enregistrement()
-    'ENREGISTREMENT D'UN FICHIER DE TYPE TEXTE (NON FORMATÉ)
-    Dim swFichier As New StreamWriter(dlgEnregistrer.FileName) 'requiert la ligne de code Imports System.IO au début du module
+        If sender Is miFichierNouveau Then      'Choix Nouveau
+            rtfZoneTexte.Clear()
+            Me.Text = "Éditeur de texte"
+        ElseIf sender Is miFichierQuitter Then  'Choix Quitter
+            Me.Close()
+        Else                                    'Choix Ouvrir
+            With dlgOuvrir
+                .CheckFileExists = True             'avertissement si le fichier n'existe pas
+                '2 choix affichés dnas la zone Type de la boîte de dialogue (*.txt et *.*)
+                .Filter = "Fichiers texte (*.txt)|*.txt|Tous les fichiers (*.*)|*.*"
+                Try
+                    If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                        'OUVERTURE D'UN FICHIER DE TYPE TEXTE (NON FORMATÉ)
+                        Dim srFichier As New StreamReader(.FileName)
+                        rtfZoneTexte.Text = srFichier.ReadToEnd() 'Chargement du fichier dans la zone de texte
+                        srFichier.Close()                     'Fermeture du fichier
+                        mstrNomFichier = .FileName            'nom du fichier conservé
+                        Me.Text = mstrNomFichier              'texte de la barre de titre du formulaire
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("Le fichier spécifié n'a pu être ouvert." & ControlChars.NewLine &
+                                    "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
+                                    "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                End Try
+            End With
 
-    Try
+            dlgEnregistrer.FileName = mstrNomFichier
+        End If
+
+        mblnTexteModifie = False  'aucune nouvelle modification
+    End Sub
+
+    'Procédure commune aux choix Enregistrer et Enregistrer sous 
+    Private Sub EnregistrerClick(ByVal sender As System.Object,
+                                 ByVal e As System.EventArgs) Handles miFichierEnregistrer.Click,
+                                                                      miFichierEnregSous.Click,
+                                                                      btnEnregistrer.Click
+
+        With dlgEnregistrer
+            'Si le texte n'a jamais été enregistré, il faut demander le nom et 
+            'chemin du fichier dans la boite de dialogue.  Si le choix est Enregistrer sous,
+            'il faut aussi afficher la boite de dialogue.
+            If Me.Text <> mstrNomFichier Or sender Is miFichierEnregSous Then
+                .Title = "Enregistrer un fichier texte"         'titre de la boîte de dialogue
+                .DefaultExt = "txt"                             'extension par défaut 
+                .Filter = "Fichier texte (*.txt)|*.txt"         'contenu de la case Type de la boîte de dialogue
+                .OverwritePrompt = True                         'avertissement si le fichier existe déjà
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then
+                    Enregistrement()
+                    mstrNomFichier = .FileName
+                    Me.Text = mstrNomFichier        'nom du fichier dans la barre de titre de l'éditeur
+                    mblnAnnulerEnreg = False        'Bouton Annuler n'a pas été sélectionné
+                Else
+                    mblnAnnulerEnreg = True         'Bouton Annuler a été sélectionné
+                End If
+            Else
+                'Si le texte a déjà été enregistré, inutile de demander le nom et le chemin dans la boite de dialogue Enregistrer
+                Enregistrement()
+            End If
+        End With
+    End Sub
+
+    Sub Enregistrement()
+        'ENREGISTREMENT D'UN FICHIER DE TYPE TEXTE (NON FORMATÉ)
+        Dim swFichier As New StreamWriter(dlgEnregistrer.FileName) 'requiert la ligne de code Imports System.IO au début du module
+
+        Try
             swFichier.Write(rtfZoneTexte.Text)          'enregistrement de tout le texte dans le fichier
-      swFichier.Close()                       'fermeture du fichier
-    Catch ex As Exception
-      MessageBox.Show("Le fichier de type texte n'a pas été enregistré." & ControlChars.NewLine &
-                      "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
-                      "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
-    End Try
+            swFichier.Close()                       'fermeture du fichier
+        Catch ex As Exception
+            MessageBox.Show("Le fichier de type texte n'a pas été enregistré." & ControlChars.NewLine &
+                            "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
+                            "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End Try
 
-    mblnTexteModifie = False                'aucune nouvelle modification
+        mblnTexteModifie = False                'aucune nouvelle modification
         rtfZoneTexte.SelectionLength = 0            'désélectionner le texte
-  End Sub
+    End Sub
 
-  Function MessageModification() As DialogResult
-    Return MessageBox.Show("Le texte actuel a été modifié." & ControlChars.NewLine &
-                           ControlChars.NewLine & "Désirez-vous enregistrer les modifications ?",
-                           "Éditeur de texte", MessageBoxButtons.YesNoCancel,
-                           MessageBoxIcon.Exclamation)
-    'Ici, une fonction a été utilisée au lieu d'une procédure générale.
-    'La principale différence entre une procédure générale et une fonction
-    'est qu'une fonction retourne obligatoirement une valeur.  
-    'Dans le cas présent, la valeur retournée est de type DialogResult 
-    '(réponse de l'utilisateur au message affiché, Yes, No ou Cancel).
+    Function MessageModification() As DialogResult
+        Return MessageBox.Show("Le texte actuel a été modifié." & ControlChars.NewLine &
+                               ControlChars.NewLine & "Désirez-vous enregistrer les modifications ?",
+                               "Éditeur de texte", MessageBoxButtons.YesNoCancel,
+                               MessageBoxIcon.Exclamation)
+        'Ici, une fonction a été utilisée au lieu d'une procédure générale.
+        'La principale différence entre une procédure générale et une fonction
+        'est qu'une fonction retourne obligatoirement une valeur.  
+        'Dans le cas présent, la valeur retournée est de type DialogResult 
+        '(réponse de l'utilisateur au message affiché, Yes, No ou Cancel).
 
-    'Une fonction débute par la ligne Function et se termine par la ligne End Function. 
-    'La ligne Function est constituée du nom de la fonction suivi de ses arguments 
-    'facultatifs (aucun dans le cas présent) et du type de données de la valeur
-    'retournée (cas présent : DialogResult). 
-    'L'instruction Return retourne à la procédure appelante (NouveauOuvrirQuitter),
-    'la valeur qui sera affectée à mdrReponse dans la procédure appelante.
-  End Function
+        'Une fonction débute par la ligne Function et se termine par la ligne End Function. 
+        'La ligne Function est constituée du nom de la fonction suivi de ses arguments 
+        'facultatifs (aucun dans le cas présent) et du type de données de la valeur
+        'retournée (cas présent : DialogResult). 
+        'L'instruction Return retourne à la procédure appelante (NouveauOuvrirQuitter),
+        'la valeur qui sera affectée à mdrReponse dans la procédure appelante.
+    End Function
 
-  Private Sub mmEditionRech_Click(ByVal sender As System.Object,
-                                  ByVal e As System.EventArgs) Handles miEditionRechercher.Click
+    Private Sub mmEditionRech_Click(ByVal sender As System.Object,
+                                    ByVal e As System.EventArgs) Handles miEditionRechercher.Click,
+                                                                         btnRechercher.Click
 
-    Dim intPosition As Integer    'Position de la chaine trouvée dans le texte
+        Dim intPosition As Integer    'Position de la chaine trouvée dans le texte
 
-    mstrChaineRech = InputBox("Chaine recherchée :", "Recherche d'une chaine de caractères dans le texte")
-    If mstrChaineRech = "" Then    'Si Annuler a été pressé ou rien n'a été tapé,
-      Exit Sub                     'une chaine vide est retournée
-    End If
+        mstrChaineRech = InputBox("Chaine recherchée :", "Recherche d'une chaine de caractères dans le texte")
+        If mstrChaineRech = "" Then    'Si Annuler a été pressé ou rien n'a été tapé,
+            Exit Sub                     'une chaine vide est retournée
+        End If
 
-    'La méthode IndexOf de la classe String recherche à partir de la position 0 
-    'dans txtTexte.Text, la chaine mstrChaineRech et retourne la première position
-    'où la chaîne a été trouvée. 
+        'La méthode IndexOf de la classe String recherche à partir de la position 0 
+        'dans txtTexte.Text, la chaine mstrChaineRech et retourne la première position
+        'où la chaîne a été trouvée. 
         intPosition = rtfZoneTexte.Text.IndexOf(mstrChaineRech)
-    If intPosition = -1 Then  'La valeur -1 est retournée si aucune occurence de la chaîne n'a été trouvée
-      MessageBox.Show("Recherche infructueuse !", "Recherche")
-    Else
-      'Sélectionne tous les caractères (Length) de la chaine trouvée dans le texte 
-      'à partir de sa position de départ.
+        If intPosition = -1 Then  'La valeur -1 est retournée si aucune occurence de la chaîne n'a été trouvée
+            MessageBox.Show("Recherche infructueuse !", "Recherche")
+        Else
+            'Sélectionne tous les caractères (Length) de la chaine trouvée dans le texte 
+            'à partir de sa position de départ.
             rtfZoneTexte.Select(intPosition, mstrChaineRech.Length)
-      'Active le choix Rechercher le suivant au menu
-      miEditionRechercherSuiv.Enabled = True
-    End If
-    'Noter que les recherches tiennent compte de la casse (minuscules différentes des majuscules)
-    'Pour ne pas en tenir compte, tu peux ajouter la ligne de code qui suit au début
-    'du module :  Option Compare Text
-  End Sub
+            'Active le choix Rechercher le suivant au menu
+            miEditionRechercherSuiv.Enabled = True
+        End If
+        'Noter que les recherches tiennent compte de la casse (minuscules différentes des majuscules)
+        'Pour ne pas en tenir compte, tu peux ajouter la ligne de code qui suit au début
+        'du module :  Option Compare Text
+    End Sub
 
-  Private Sub mmEditionRechSuiv_Click(ByVal sender As System.Object,
-                                      ByVal e As System.EventArgs) Handles miEditionRechercherSuiv.Click
+    Private Sub mmEditionRechSuiv_Click(ByVal sender As System.Object,
+                                        ByVal e As System.EventArgs) Handles miEditionRechercherSuiv.Click
 
-    Dim intPosition As Integer
+        Dim intPosition As Integer
 
-    'La prochaine recherche doit débuter à la position qui suit le
-    'début du texte sélectionné (txtTexte.SelectionStart + 1)
-    'Le dernier argument permet d'ignorer la casse lors de la recherche
+        'La prochaine recherche doit débuter à la position qui suit le
+        'début du texte sélectionné (txtTexte.SelectionStart + 1)
+        'Le dernier argument permet d'ignorer la casse lors de la recherche
         intPosition = rtfZoneTexte.Text.IndexOf(mstrChaineRech, rtfZoneTexte.SelectionStart + 1,
                                         System.StringComparison.CurrentCultureIgnoreCase)
-    If intPosition = -1 Then
-      MessageBox.Show("La recherche est terminée.", "Rechercher le suivant")
-      miEditionRechercherSuiv.Enabled = False
-    Else
-      'Sélectionne la chaîne suivante dans le texte
+        If intPosition = -1 Then
+            MessageBox.Show("La recherche est terminée.", "Rechercher le suivant")
+            miEditionRechercherSuiv.Enabled = False
+        Else
+            'Sélectionne la chaîne suivante dans le texte
             rtfZoneTexte.Select(intPosition, mstrChaineRech.Length)
-    End If
-  End Sub
+        End If
+    End Sub
 
-  Private Sub mmFormatRetourAuto_Click(ByVal sender As System.Object,
-                                       ByVal e As System.EventArgs) Handles miFormatRetourAutomatique.Click
+    Private Sub mmFormatRetourAuto_Click(ByVal sender As System.Object,
+                                         ByVal e As System.EventArgs) Handles miFormatRetourAutomatique.Click
 
-    'Cocher ou décocher le choix dans le menu
-    miFormatRetourAutomatique.Checked = Not miFormatRetourAutomatique.Checked
-    'Ajuste ou non la longueur des lignes à la largeur du formulaire
+        'Cocher ou décocher le choix dans le menu
+        miFormatRetourAutomatique.Checked = Not miFormatRetourAutomatique.Checked
+        'Ajuste ou non la longueur des lignes à la largeur du formulaire
         rtfZoneTexte.WordWrap = Not rtfZoneTexte.WordWrap
-  End Sub
+    End Sub
 
-  'Ajout d'un contrôle FontDialog au formulaire nommé dlgPolice
-  Private Sub mmFormatPolice_Click(ByVal sender As System.Object,
-                                   ByVal e As System.EventArgs) Handles miFormatPolice.Click
+    'Ajout d'un contrôle FontDialog au formulaire nommé dlgPolice
+    Private Sub mmFormatPolice_Click(ByVal sender As System.Object,
+                                     ByVal e As System.EventArgs) Handles miFormatPolice.Click
 
-    With dlgPolice
-      .ShowColor = True                       'ajoute le choix Couleur (peut être fait en Design)
+        With dlgPolice
+            .ShowColor = True                       'ajoute le choix Couleur (peut être fait en Design)
             .Font = rtfZoneTexte.Font                   'affecte à la boîte de dialogue la police et la couleur du texte
             .Color = rtfZoneTexte.ForeColor
-      Try
-        If .ShowDialog = Windows.Forms.DialogResult.OK Then   'affichage de la boîte Police
+            Try
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then   'affichage de la boîte Police
                     rtfZoneTexte.Font = .Font               'police affectée à tout le texte
                     rtfZoneTexte.ForeColor = .Color         'couleur affectée à tout le texte
-        End If
-      Catch ex As Exception
-        MessageBox.Show("La police de caractères n'a pu être modifiée." & ControlChars.NewLine &
-                        "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
-                        "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
-      End Try
-    End With
-  End Sub
-
-  Private Sub mmFichierImprimer_Click(ByVal sender As Object,
-                                      ByVal e As System.EventArgs) Handles miFichierImprimer.Click
-    'Voir projet BoitesDialogue
-  End Sub
-
-    Private Sub btnAjouterDate_Click(sender As Object,
-                                     e As EventArgs)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("La police de caractères n'a pu être modifiée." & ControlChars.NewLine &
+                                "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
+                                "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            End Try
+        End With
+    End Sub
+    Private Sub frmEditeur_Load(sender As Object,
+                                e As EventArgs) Handles MyBase.Load
 
     End Sub
 
-    Private Sub frmEditeur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub miFormatCouleur_Click(sender As Object,
+                                      e As EventArgs) Handles miFormatCouleur.Click
+
+        With dlgCouleur
+            .Color = rtfZoneTexte.SelectionColor      'Pour que la couleur du texte soit sélectionnée par défaut dans la boîte des couleurs.
+            Try
+                If .ShowDialog = Windows.Forms.DialogResult.OK Then     'Méthode ShowDialog affiche la boîte de dialogue
+                    rtfZoneTexte.SelectionColor = .Color    'si l'utilisateur choisit OK dans la boîte de dialogue, 
+                End If                                    'la couleur choisie est affectée au texte sélectionné ou à partir du point d'insertion
+            Catch ex As Exception
+                MessageBox.Show("La couleur n'a pu être modifiée." & ControlChars.NewLine &
+                                "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
+                                "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            End Try
+        End With
+
+        rtfZoneTexte.Focus()
+    End Sub
+
+
+    Private Sub Imprimer_Click(ByVal sender As System.Object,
+                                       ByVal e As System.EventArgs) Handles miFichierImprimer.Click,
+                                                                            btnImprimer.Click
+
+        'un objet de type PrintDocument doit être affecté à la propriété .Document du contrôle PrintDialog
+        dlgImprimer.Document = prtDocument
+        Try
+            If dlgImprimer.ShowDialog = Windows.Forms.DialogResult.OK Then
+                prtDocument.Print()   'Méthode qui déclenche l'évènement PrintPage qui suit
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Le document n'a pu être imprimé." & ControlChars.NewLine &
+                            "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
+                            "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End Try
+
+        rtfZoneTexte.Focus()
+    End Sub
+
+    Private Sub prtDocument_PrintPage(ByVal sender As Object,
+                                      ByVal e As Printing.PrintPageEventArgs) Handles prtDocument.PrintPage
+
+        'La méthode DrawString permet d'imprimer un texte non formaté.
+        'La propriété Text du contrôle RichTextBox retourne le texte non formaté
+        'tandis que la propriété .rtf retourne le texte formaté.
+        'Note : Imprimer correctement un texte formaté est passablement complexe
+        'et ne fait pas partie du cours.
+        e.Graphics.DrawString(rtfZoneTexte.Text,
+                              New Font("courier new", 10, FontStyle.Regular),
+                              Brushes.Black, 50, 75)  'texte avec une police Courier new, taille 10, aucun style particulier
+        'couleur = noire, marge de gauche : 50, marge du haut : 75
+
+    End Sub
+
+    Private Sub miFichierApercu_Click(ByVal sender As Object,
+                                      ByVal e As EventArgs) Handles miFichierApercu.Click
+
+        'un objet de type PrintDocument doit être affecté à la propriété .Document du contrôle PrintPreviewDialog
+        dlgApercu.Document = prtDocument
+        Try
+            dlgApercu.ShowDialog()
+        Catch ex As Exception
+            MessageBox.Show("La boite de dialogue Apercu avant impression n'a pu être affichée." & ControlChars.NewLine &
+                            "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
+                            "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End Try
+
+        rtfZoneTexte.Focus()
+    End Sub
+
+    Private Sub miEditionMiseEnPage_Click(ByVal sender As Object,
+                                          ByVal e As EventArgs) Handles miEditionMiseEnPage.Click
+
+        'un objet de type PrintDocument doit être affecté à la propriété 
+        'Document du contrôle PageSetupDialog
+        dlgMiseEnPage.Document = prtDocument
+        Try
+            dlgMiseEnPage.ShowDialog()
+        Catch ex As Exception
+            MessageBox.Show("La boite de dialogue Mise en page n'a pu être affichée." & ControlChars.NewLine &
+                            "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
+                            "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+        End Try
+
+        rtfZoneTexte.Focus()
+    End Sub
+
+    Private Sub rtfZoneTexte_TextChanged(ByVal sender As Object,
+                                         ByVal e As System.EventArgs) Handles rtfZoneTexte.TextChanged
+
+        'A chaque fois que le texte est modifié, la taille du texte est affichée dans la barre d'état
+        ssTaille.Text = "Taille : " & rtfZoneTexte.TextLength & " octet"
+        If rtfZoneTexte.TextLength > 1 Then
+            ssTaille.Text &= "s"
+        End If
+
+        mblnTexteModifie = True
+
+    End Sub
+
+
+    'Affichage de la date du jour sur la barre d'état
+    Private Sub frmBarres_Load(ByVal sender As Object,
+                               ByVal e As System.EventArgs) Handles MyBase.Load
+
+        ssDate.Text = Date.Now.ToLongDateString
+        rtfZoneTexte.Focus()
+    End Sub
+
+    Private Sub btnGrasItalic_Click(sender As Object,
+                              e As EventArgs) Handles btnGras.Click,
+                                                      btnItalic.Click
+        Dim FontStyle As FontStyle
+
+        FontStyle = (1 * Drawing.FontStyle.Bold)
+        FontStyle = (2 * Drawing.FontStyle.Italic)
+
+        'Marche paaaas
+    End Sub
+
+
+    Private Sub btnUndoRedo_Click(sender As Object,
+                                e As EventArgs) Handles btnAnnuler.Click,
+                                                        btnRefaire.Click
+
+
+        Select Case sender.name.ToString
+            Case "btnAnnuler"
+                rtfZoneTexte.Undo()
+            Case "btnRefaire"
+                rtfZoneTexte.Redo()
+        End Select
+
+
 
     End Sub
 End Class
