@@ -213,7 +213,7 @@ Public Class frmEditeur
     End Sub
 
     Private Sub mmFormatRetourAuto_Click(ByVal sender As System.Object,
-                                         ByVal e As System.EventArgs) Handles miFormatRetourAutomatique.Click
+                                         ByVal e As System.EventArgs)
 
         'Cocher ou décocher le choix dans le menu
         miFormatRetourAutomatique.Checked = Not miFormatRetourAutomatique.Checked
@@ -301,7 +301,7 @@ Public Class frmEditeur
     End Sub
 
     Private Sub miFichierApercu_Click(ByVal sender As Object,
-                                      ByVal e As EventArgs) Handles miFichierApercu.Click
+                                      ByVal e As EventArgs)
 
         'un objet de type PrintDocument doit être affecté à la propriété .Document du contrôle PrintPreviewDialog
         dlgApercu.Document = prtDocument
@@ -317,7 +317,7 @@ Public Class frmEditeur
     End Sub
 
     Private Sub miEditionMiseEnPage_Click(ByVal sender As Object,
-                                          ByVal e As EventArgs) Handles miEditionMiseEnPage.Click
+                                          ByVal e As EventArgs)
 
         'un objet de type PrintDocument doit être affecté à la propriété 
         'Document du contrôle PageSetupDialog

@@ -32,17 +32,13 @@ Partial Class frmEditeur
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.miFichierEnregistrer = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFichierEnregSous = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.miFichierApercu = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFichierImprimer = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator()
         Me.miFichierQuitter = New System.Windows.Forms.ToolStripMenuItem()
         Me.miEdition = New System.Windows.Forms.ToolStripMenuItem()
         Me.miEditionRechercher = New System.Windows.Forms.ToolStripMenuItem()
         Me.miEditionRechercherSuiv = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miEditionMiseEnPage = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFormat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miFormatRetourAutomatique = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFormatCouleur = New System.Windows.Forms.ToolStripMenuItem()
         Me.miFormatPolice = New System.Windows.Forms.ToolStripMenuItem()
         Me.rtfZoneTexte = New System.Windows.Forms.RichTextBox()
@@ -66,6 +62,21 @@ Partial Class frmEditeur
         Me.btnRefaire = New System.Windows.Forms.ToolStripButton()
         Me.btnGras = New System.Windows.Forms.ToolStripButton()
         Me.btnItalic = New System.Windows.Forms.ToolStripButton()
+        Me.miEditionAnnuler = New System.Windows.Forms.ToolStripMenuItem()
+        Me.miEditionRefaire = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.miEditionCouper = New System.Windows.Forms.ToolStripMenuItem()
+        Me.miEditionCopier = New System.Windows.Forms.ToolStripMenuItem()
+        Me.miEditionColler = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.miEditionHeureDate = New System.Windows.Forms.ToolStripMenuItem()
+        Me.miFormatRetourAutomatique = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.miFormatStyle = New System.Windows.Forms.ToolStripMenuItem()
+        Me.miFormatStyleGras = New System.Windows.Forms.ToolStripMenuItem()
+        Me.miFormatStyleIta = New System.Windows.Forms.ToolStripMenuItem()
+        Me.miFormatStyleSous = New System.Windows.Forms.ToolStripMenuItem()
         Me.msBarreMenu.SuspendLayout()
         Me.ssBarreEtat.SuspendLayout()
         Me.tsBarreOutils.SuspendLayout()
@@ -85,7 +96,7 @@ Partial Class frmEditeur
         '
         'miFichier
         '
-        Me.miFichier.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFichierNouveau, Me.miFichierOuvrir, Me.ToolStripMenuItem1, Me.miFichierEnregistrer, Me.miFichierEnregSous, Me.ToolStripMenuItem2, Me.miFichierApercu, Me.miFichierImprimer, Me.ToolStripMenuItem3, Me.miFichierQuitter})
+        Me.miFichier.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFichierNouveau, Me.miFichierOuvrir, Me.miFichierEnregistrer, Me.miFichierEnregSous, Me.ToolStripMenuItem1, Me.miFichierImprimer, Me.ToolStripMenuItem3, Me.miFichierQuitter})
         Me.miFichier.Name = "miFichier"
         Me.miFichier.Size = New System.Drawing.Size(54, 20)
         Me.miFichier.Text = "&Fichier"
@@ -93,63 +104,59 @@ Partial Class frmEditeur
         'miFichierNouveau
         '
         Me.miFichierNouveau.Name = "miFichierNouveau"
-        Me.miFichierNouveau.Size = New System.Drawing.Size(166, 22)
+        Me.miFichierNouveau.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
+        Me.miFichierNouveau.Size = New System.Drawing.Size(229, 22)
         Me.miFichierNouveau.Text = "&Nouveau"
         '
         'miFichierOuvrir
         '
         Me.miFichierOuvrir.Name = "miFichierOuvrir"
-        Me.miFichierOuvrir.Size = New System.Drawing.Size(166, 22)
+        Me.miFichierOuvrir.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
+        Me.miFichierOuvrir.Size = New System.Drawing.Size(229, 22)
         Me.miFichierOuvrir.Text = "&Ouvrir"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(163, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(226, 6)
         '
         'miFichierEnregistrer
         '
         Me.miFichierEnregistrer.Name = "miFichierEnregistrer"
-        Me.miFichierEnregistrer.Size = New System.Drawing.Size(166, 22)
+        Me.miFichierEnregistrer.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.miFichierEnregistrer.Size = New System.Drawing.Size(229, 22)
         Me.miFichierEnregistrer.Text = "&Enregistrer"
         '
         'miFichierEnregSous
         '
         Me.miFichierEnregSous.Name = "miFichierEnregSous"
-        Me.miFichierEnregSous.Size = New System.Drawing.Size(166, 22)
+        Me.miFichierEnregSous.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.miFichierEnregSous.Size = New System.Drawing.Size(229, 22)
         Me.miFichierEnregSous.Text = "En&registrer sous..."
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(163, 6)
-        '
-        'miFichierApercu
-        '
-        Me.miFichierApercu.Name = "miFichierApercu"
-        Me.miFichierApercu.Size = New System.Drawing.Size(166, 22)
-        Me.miFichierApercu.Text = "Aperçu"
         '
         'miFichierImprimer
         '
         Me.miFichierImprimer.Name = "miFichierImprimer"
-        Me.miFichierImprimer.Size = New System.Drawing.Size(166, 22)
+        Me.miFichierImprimer.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.miFichierImprimer.Size = New System.Drawing.Size(229, 22)
         Me.miFichierImprimer.Text = "&Imprimer..."
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(163, 6)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(226, 6)
         '
         'miFichierQuitter
         '
         Me.miFichierQuitter.Name = "miFichierQuitter"
-        Me.miFichierQuitter.Size = New System.Drawing.Size(166, 22)
+        Me.miFichierQuitter.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
+        Me.miFichierQuitter.Size = New System.Drawing.Size(229, 22)
         Me.miFichierQuitter.Text = "&Quitter"
         '
         'miEdition
         '
-        Me.miEdition.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miEditionRechercher, Me.miEditionRechercherSuiv, Me.miEditionMiseEnPage})
+        Me.miEdition.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miEditionAnnuler, Me.miEditionRefaire, Me.ToolStripSeparator1, Me.miEditionCouper, Me.miEditionCopier, Me.miEditionColler, Me.ToolStripSeparator2, Me.miEditionRechercher, Me.miEditionRechercherSuiv, Me.ToolStripSeparator3, Me.miEditionHeureDate, Me.ToolStripSeparator4, Me.miFormatRetourAutomatique})
         Me.miEdition.Name = "miEdition"
         Me.miEdition.Size = New System.Drawing.Size(56, 20)
         Me.miEdition.Text = "&Edition"
@@ -157,44 +164,34 @@ Partial Class frmEditeur
         'miEditionRechercher
         '
         Me.miEditionRechercher.Name = "miEditionRechercher"
-        Me.miEditionRechercher.Size = New System.Drawing.Size(186, 22)
+        Me.miEditionRechercher.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F), System.Windows.Forms.Keys)
+        Me.miEditionRechercher.Size = New System.Drawing.Size(230, 22)
         Me.miEditionRechercher.Text = "&Rechercher..."
         '
         'miEditionRechercherSuiv
         '
         Me.miEditionRechercherSuiv.Name = "miEditionRechercherSuiv"
-        Me.miEditionRechercherSuiv.Size = New System.Drawing.Size(186, 22)
-        Me.miEditionRechercherSuiv.Text = "Rechercher le suivant"
-        '
-        'miEditionMiseEnPage
-        '
-        Me.miEditionMiseEnPage.Name = "miEditionMiseEnPage"
-        Me.miEditionMiseEnPage.Size = New System.Drawing.Size(186, 22)
-        Me.miEditionMiseEnPage.Text = "Mise en page"
+        Me.miEditionRechercherSuiv.ShortcutKeys = System.Windows.Forms.Keys.F3
+        Me.miEditionRechercherSuiv.Size = New System.Drawing.Size(230, 22)
+        Me.miEditionRechercherSuiv.Text = "Rechercher le sui&vant"
         '
         'miFormat
         '
-        Me.miFormat.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFormatRetourAutomatique, Me.miFormatCouleur, Me.miFormatPolice})
+        Me.miFormat.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFormatStyle, Me.miFormatPolice, Me.miFormatCouleur})
         Me.miFormat.Name = "miFormat"
         Me.miFormat.Size = New System.Drawing.Size(57, 20)
         Me.miFormat.Text = "F&ormat"
         '
-        'miFormatRetourAutomatique
-        '
-        Me.miFormatRetourAutomatique.Name = "miFormatRetourAutomatique"
-        Me.miFormatRetourAutomatique.Size = New System.Drawing.Size(230, 22)
-        Me.miFormatRetourAutomatique.Text = "&Retour automatique à la ligne"
-        '
         'miFormatCouleur
         '
         Me.miFormatCouleur.Name = "miFormatCouleur"
-        Me.miFormatCouleur.Size = New System.Drawing.Size(230, 22)
-        Me.miFormatCouleur.Text = "Couleur de texte"
+        Me.miFormatCouleur.Size = New System.Drawing.Size(152, 22)
+        Me.miFormatCouleur.Text = "&Couleur..."
         '
         'miFormatPolice
         '
         Me.miFormatPolice.Name = "miFormatPolice"
-        Me.miFormatPolice.Size = New System.Drawing.Size(230, 22)
+        Me.miFormatPolice.Size = New System.Drawing.Size(152, 22)
         Me.miFormatPolice.Text = "&Police..."
         '
         'rtfZoneTexte
@@ -353,6 +350,105 @@ Partial Class frmEditeur
         Me.btnItalic.Name = "btnItalic"
         Me.btnItalic.Size = New System.Drawing.Size(23, 22)
         '
+        'miEditionAnnuler
+        '
+        Me.miEditionAnnuler.Name = "miEditionAnnuler"
+        Me.miEditionAnnuler.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
+        Me.miEditionAnnuler.Size = New System.Drawing.Size(230, 22)
+        Me.miEditionAnnuler.Text = "&Annuler"
+        '
+        'miEditionRefaire
+        '
+        Me.miEditionRefaire.Name = "miEditionRefaire"
+        Me.miEditionRefaire.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
+        Me.miEditionRefaire.Size = New System.Drawing.Size(230, 22)
+        Me.miEditionRefaire.Text = "Re&faire"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(227, 6)
+        '
+        'miEditionCouper
+        '
+        Me.miEditionCouper.Name = "miEditionCouper"
+        Me.miEditionCouper.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
+        Me.miEditionCouper.Size = New System.Drawing.Size(230, 22)
+        Me.miEditionCouper.Text = "&Couper"
+        '
+        'miEditionCopier
+        '
+        Me.miEditionCopier.Name = "miEditionCopier"
+        Me.miEditionCopier.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+        Me.miEditionCopier.Size = New System.Drawing.Size(230, 22)
+        Me.miEditionCopier.Text = "Co&pier"
+        '
+        'miEditionColler
+        '
+        Me.miEditionColler.Name = "miEditionColler"
+        Me.miEditionColler.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
+        Me.miEditionColler.Size = New System.Drawing.Size(230, 22)
+        Me.miEditionColler.Text = "C&oller"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(227, 6)
+        '
+        'miEditionHeureDate
+        '
+        Me.miEditionHeureDate.Name = "miEditionHeureDate"
+        Me.miEditionHeureDate.ShortcutKeys = System.Windows.Forms.Keys.F5
+        Me.miEditionHeureDate.Size = New System.Drawing.Size(230, 22)
+        Me.miEditionHeureDate.Text = "Heure\&Date"
+        '
+        'miFormatRetourAutomatique
+        '
+        Me.miFormatRetourAutomatique.Checked = True
+        Me.miFormatRetourAutomatique.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.miFormatRetourAutomatique.Name = "miFormatRetourAutomatique"
+        Me.miFormatRetourAutomatique.Size = New System.Drawing.Size(230, 22)
+        Me.miFormatRetourAutomatique.Text = "Retour automatique à la &ligne"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(227, 6)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(227, 6)
+        '
+        'miFormatStyle
+        '
+        Me.miFormatStyle.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFormatStyleGras, Me.miFormatStyleIta, Me.miFormatStyleSous})
+        Me.miFormatStyle.Name = "miFormatStyle"
+        Me.miFormatStyle.Size = New System.Drawing.Size(152, 22)
+        Me.miFormatStyle.Text = "&Style"
+        '
+        'miFormatStyleGras
+        '
+        Me.miFormatStyleGras.Name = "miFormatStyleGras"
+        Me.miFormatStyleGras.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
+        Me.miFormatStyleGras.Size = New System.Drawing.Size(162, 22)
+        Me.miFormatStyleGras.Text = "&Gras"
+        '
+        'miFormatStyleIta
+        '
+        Me.miFormatStyleIta.Name = "miFormatStyleIta"
+        Me.miFormatStyleIta.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
+        Me.miFormatStyleIta.Size = New System.Drawing.Size(162, 22)
+        Me.miFormatStyleIta.Text = "&Italique"
+        '
+        'miFormatStyleSous
+        '
+        Me.miFormatStyleSous.Name = "miFormatStyleSous"
+        Me.miFormatStyleSous.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
+        Me.miFormatStyleSous.Size = New System.Drawing.Size(162, 22)
+        Me.miFormatStyleSous.Text = "&Souligne"
+        '
         'frmEditeur
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -389,7 +485,6 @@ Partial Class frmEditeur
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents miFichierEnregistrer As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents miFichierEnregSous As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents miFichierImprimer As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents miFichierQuitter As System.Windows.Forms.ToolStripMenuItem
@@ -398,10 +493,7 @@ Partial Class frmEditeur
     Friend WithEvents miEditionRechercherSuiv As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents miFormat As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents miFormatPolice As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents miFormatRetourAutomatique As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents rtfZoneTexte As System.Windows.Forms.RichTextBox
-    Friend WithEvents miFichierApercu As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents miEditionMiseEnPage As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents miFormatCouleur As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents dlgCouleur As System.Windows.Forms.ColorDialog
     Friend WithEvents dlgApercu As System.Windows.Forms.PrintPreviewDialog
@@ -423,4 +515,19 @@ Partial Class frmEditeur
     Friend WithEvents btnGras As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnItalic As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnRechercher As System.Windows.Forms.ToolStripButton
+    Friend WithEvents miEditionAnnuler As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents miEditionRefaire As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents miEditionCouper As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents miEditionCopier As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents miEditionColler As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents miEditionHeureDate As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents miFormatRetourAutomatique As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents miFormatStyle As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents miFormatStyleGras As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents miFormatStyleIta As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents miFormatStyleSous As System.Windows.Forms.ToolStripMenuItem
 End Class
