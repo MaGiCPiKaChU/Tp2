@@ -75,7 +75,7 @@ Public Class frmEditeur
             With dlgOuvrir
                 .CheckFileExists = True             'avertissement si le fichier n'existe pas
                 '2 choix affichés dnas la zone Type de la boîte de dialogue (*.txt et *.*)
-                .Filter = "Fichiers texte (*.txt)|*.txt|Tous les fichiers (*.*)|*.*"
+                .Filter = "Fichiers texte (*.txt)|*.txt|Tous les fichiers (*.*)|*.*|RTF Files|*.rtf" '****************Caro******************* Ouvrir un fichier RTF 
                 Try
                     If .ShowDialog = Windows.Forms.DialogResult.OK Then
                         'OUVERTURE D'UN FICHIER DE TYPE TEXTE (NON FORMATÉ)
@@ -111,7 +111,8 @@ Public Class frmEditeur
             If Me.Text <> mstrNomFichier Or sender Is miFichierEnregSous Then
                 .Title = "Enregistrer un fichier texte"         'titre de la boîte de dialogue
                 .DefaultExt = "txt"                             'extension par défaut 
-                .Filter = "Fichier texte (*.txt)|*.txt"         'contenu de la case Type de la boîte de dialogue
+                '.Filter = "Fichier texte (*.txt)|*.txt|"         'contenu de la case Type de la boîte de dialogue
+                .Filter = "Fichier texte (*.txt;*.rtf)|*.txt;*.rtf" '********************************************************Caro******************* Ouvrir un fichier RTF 
                 .OverwritePrompt = True                         'avertissement si le fichier existe déjà
                 If .ShowDialog = Windows.Forms.DialogResult.OK Then
                     Enregistrement()
@@ -378,6 +379,14 @@ Public Class frmEditeur
             Case "btnRefaire"
                 rtfZoneTexte.Redo()
         End Select
+
+
+
+    End Sub
+
+
+    Private Sub miEditionHeureDate_Click(sender As Object,
+                                         e As EventArgs) Handles miEditionHeureDate.Click
 
 
 
