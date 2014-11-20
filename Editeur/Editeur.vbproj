@@ -99,6 +99,12 @@
     <Compile Include="AssemblyInfo.vb">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="frmDateHeure.Designer.vb">
+      <DependentUpon>frmDateHeure.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDateHeure.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmEditeur.Designer.vb">
       <DependentUpon>frmEditeur.vb</DependentUpon>
     </Compile>
@@ -111,6 +117,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmDateHeure.resx">
+      <DependentUpon>frmDateHeure.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEditeur.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmEditeur.vb</DependentUpon>

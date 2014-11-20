@@ -388,6 +388,12 @@ Public Class frmEditeur
     Private Sub miEditionHeureDate_Click(sender As Object,
                                          e As EventArgs) Handles miEditionHeureDate.Click
 
+        'Dim frmDateHeure As New frmDateHeure
+
+        'frmDateHeure.Show()
+
+        frmDateHeure.ShowDialog()
+
 
 
     End Sub

@@ -93,3 +93,4 @@ C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Edite
 \\psf\Home\Desktop\TP 2\Editeur\obj\Debug\Automne2011_Editeur.frmEditeur.resources
 \\psf\Home\Desktop\TP 2\Editeur\obj\Debug\Automne2011_Editeur.Resources.resources
 \\psf\Home\Desktop\TP 2\Editeur\obj\Debug\Editeur.vbproj.GenerateResource.Cache
+C:\Users\Sathirel\Dropbox\Cégep\Programmation orienté objet\TP2\TP2 - AC\Editeur\obj\Debug\Automne2011_Editeur.frmDateHeure.resources

@@ -68,18 +68,18 @@ Partial Class frmEditeur
         Me.btnOuvrir = New System.Windows.Forms.ToolStripButton()
         Me.btnEnregistrer = New System.Windows.Forms.ToolStripButton()
         Me.btnImprimer = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnRechercher = New System.Windows.Forms.ToolStripButton()
         Me.btnCouper = New System.Windows.Forms.ToolStripButton()
         Me.btnCopier = New System.Windows.Forms.ToolStripButton()
         Me.btnColler = New System.Windows.Forms.ToolStripButton()
-        Me.btnRetourLigne = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnAnnuler = New System.Windows.Forms.ToolStripButton()
         Me.btnRefaire = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnRetourLigne = New System.Windows.Forms.ToolStripButton()
         Me.btnGras = New System.Windows.Forms.ToolStripButton()
         Me.btnItalic = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.msBarreMenu.SuspendLayout()
         Me.ssBarreEtat.SuspendLayout()
         Me.tsBarreOutils.SuspendLayout()
@@ -261,7 +261,7 @@ Partial Class frmEditeur
         '
         Me.miFormatStyle.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFormatStyleGras, Me.miFormatStyleIta, Me.miFormatStyleSous})
         Me.miFormatStyle.Name = "miFormatStyle"
-        Me.miFormatStyle.Size = New System.Drawing.Size(125, 22)
+        Me.miFormatStyle.Size = New System.Drawing.Size(152, 22)
         Me.miFormatStyle.Text = "&Style"
         '
         'miFormatStyleGras
@@ -386,6 +386,11 @@ Partial Class frmEditeur
         Me.btnImprimer.Name = "btnImprimer"
         Me.btnImprimer.Size = New System.Drawing.Size(23, 22)
         '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
+        '
         'btnRechercher
         '
         Me.btnRechercher.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -418,13 +423,10 @@ Partial Class frmEditeur
         Me.btnColler.Name = "btnColler"
         Me.btnColler.Size = New System.Drawing.Size(23, 22)
         '
-        'btnRetourLigne
+        'ToolStripSeparator6
         '
-        Me.btnRetourLigne.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.btnRetourLigne.Image = CType(resources.GetObject("btnRetourLigne.Image"), System.Drawing.Image)
-        Me.btnRetourLigne.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnRetourLigne.Name = "btnRetourLigne"
-        Me.btnRetourLigne.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
         '
         'btnAnnuler
         '
@@ -442,6 +444,19 @@ Partial Class frmEditeur
         Me.btnRefaire.Name = "btnRefaire"
         Me.btnRefaire.Size = New System.Drawing.Size(23, 22)
         '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 25)
+        '
+        'btnRetourLigne
+        '
+        Me.btnRetourLigne.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnRetourLigne.Image = CType(resources.GetObject("btnRetourLigne.Image"), System.Drawing.Image)
+        Me.btnRetourLigne.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnRetourLigne.Name = "btnRetourLigne"
+        Me.btnRetourLigne.Size = New System.Drawing.Size(23, 22)
+        '
         'btnGras
         '
         Me.btnGras.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -457,21 +472,6 @@ Partial Class frmEditeur
         Me.btnItalic.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnItalic.Name = "btnItalic"
         Me.btnItalic.Size = New System.Drawing.Size(23, 22)
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator7
-        '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 25)
         '
         'frmEditeur
         '
