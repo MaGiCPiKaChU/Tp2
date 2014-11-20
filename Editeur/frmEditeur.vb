@@ -397,4 +397,12 @@ Public Class frmEditeur
 
 
     End Sub
+
+    Private Sub btnRetourLigne_Click(sender As Object,
+                                     e As EventArgs) Handles btnRetourLigne.Click,
+                                                             miFormatRetourAutomatique.Click
+
+        'Environment.NewLine.
+
+    End Sub
 End Class

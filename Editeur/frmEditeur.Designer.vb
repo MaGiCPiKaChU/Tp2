@@ -261,7 +261,7 @@ Partial Class frmEditeur
         '
         Me.miFormatStyle.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miFormatStyleGras, Me.miFormatStyleIta, Me.miFormatStyleSous})
         Me.miFormatStyle.Name = "miFormatStyle"
-        Me.miFormatStyle.Size = New System.Drawing.Size(152, 22)
+        Me.miFormatStyle.Size = New System.Drawing.Size(144, 22)
         Me.miFormatStyle.Text = "&Style"
         '
         'miFormatStyleGras
@@ -290,7 +290,7 @@ Partial Class frmEditeur
         Me.miFormatPolice.Name = "miFormatPolice"
         Me.miFormatPolice.ShortcutKeyDisplayString = ""
         Me.miFormatPolice.ShortcutKeys = System.Windows.Forms.Keys.F2
-        Me.miFormatPolice.Size = New System.Drawing.Size(152, 22)
+        Me.miFormatPolice.Size = New System.Drawing.Size(144, 22)
         Me.miFormatPolice.Text = "&Police..."
         '
         'miFormatCouleur
@@ -298,7 +298,7 @@ Partial Class frmEditeur
         Me.miFormatCouleur.Name = "miFormatCouleur"
         Me.miFormatCouleur.ShortcutKeyDisplayString = ""
         Me.miFormatCouleur.ShortcutKeys = System.Windows.Forms.Keys.F4
-        Me.miFormatCouleur.Size = New System.Drawing.Size(152, 22)
+        Me.miFormatCouleur.Size = New System.Drawing.Size(144, 22)
         Me.miFormatCouleur.Text = "&Couleur..."
         '
         'rtfZoneTexte
