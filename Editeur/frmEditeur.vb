@@ -97,6 +97,7 @@ Public Class frmEditeur
         End If
 
         mblnTexteModifie = False  'aucune nouvelle modification
+        ssModificationSauvegardes.Text = ""
     End Sub
 
     'Procédure commune aux choix Enregistrer et Enregistrer sous 
@@ -144,6 +145,7 @@ Public Class frmEditeur
         End Try
 
         mblnTexteModifie = False                'aucune nouvelle modification
+        ssModificationSauvegardes.Text = ""
         rtfZoneTexte.SelectionLength = 0            'désélectionner le texte
     End Sub
 
@@ -214,15 +216,6 @@ Public Class frmEditeur
         End If
     End Sub
 
-    Private Sub mmFormatRetourAuto_Click(ByVal sender As System.Object,
-                                         ByVal e As System.EventArgs)
-
-        'Cocher ou décocher le choix dans le menu
-        miFormatRetourAutomatique.Checked = Not miFormatRetourAutomatique.Checked
-        'Ajuste ou non la longueur des lignes à la largeur du formulaire
-        rtfZoneTexte.WordWrap = Not rtfZoneTexte.WordWrap
-    End Sub
-
     'Ajout d'un contrôle FontDialog au formulaire nommé dlgPolice
     Private Sub mmFormatPolice_Click(ByVal sender As System.Object,
                                      ByVal e As System.EventArgs) Handles miFormatPolice.Click
@@ -242,12 +235,6 @@ Public Class frmEditeur
                                 "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
             End Try
         End With
-    End Sub
-    Private Sub frmEditeur_Load(sender As Object,
-                                e As EventArgs) Handles MyBase.Load
-
-
-
     End Sub
 
     Private Sub miFormatCouleur_Click(sender As Object,
@@ -320,23 +307,6 @@ Public Class frmEditeur
         rtfZoneTexte.Focus()
     End Sub
 
-    Private Sub miEditionMiseEnPage_Click(ByVal sender As Object,
-                                          ByVal e As EventArgs)
-
-        'un objet de type PrintDocument doit être affecté à la propriété 
-        'Document du contrôle PageSetupDialog
-        dlgMiseEnPage.Document = prtDocument
-        Try
-            dlgMiseEnPage.ShowDialog()
-        Catch ex As Exception
-            MessageBox.Show("La boite de dialogue Mise en page n'a pu être affichée." & ControlChars.NewLine &
-                            "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
-                            "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
-        End Try
-
-        rtfZoneTexte.Focus()
-    End Sub
-
     Private Sub rtfZoneTexte_TextChanged(ByVal sender As Object,
                                          ByVal e As System.EventArgs) Handles rtfZoneTexte.TextChanged
 
@@ -345,7 +315,7 @@ Public Class frmEditeur
         If rtfZoneTexte.TextLength > 1 Then
             ssTaille.Text &= "s"
         End If
-
+        ssModificationSauvegardes.Text = "Le texte a été modifié"
         mblnTexteModifie = True
 
     End Sub
@@ -357,7 +327,6 @@ Public Class frmEditeur
 
         ssDate.Text = Date.Now.ToLongDateString
         rtfZoneTexte.Focus()
-
 
     End Sub
 

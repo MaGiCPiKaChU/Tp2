@@ -80,6 +80,7 @@ Partial Class frmEditeur
         Me.btnRetourLigne = New System.Windows.Forms.ToolStripButton()
         Me.btnGras = New System.Windows.Forms.ToolStripButton()
         Me.btnItalic = New System.Windows.Forms.ToolStripButton()
+        Me.ssModificationSauvegardes = New System.Windows.Forms.ToolStripStatusLabel()
         Me.msBarreMenu.SuspendLayout()
         Me.ssBarreEtat.SuspendLayout()
         Me.tsBarreOutils.SuspendLayout()
@@ -219,6 +220,7 @@ Partial Class frmEditeur
         '
         'miEditionRechercherSuiv
         '
+        Me.miEditionRechercherSuiv.Enabled = False
         Me.miEditionRechercherSuiv.Name = "miEditionRechercherSuiv"
         Me.miEditionRechercherSuiv.ShortcutKeys = System.Windows.Forms.Keys.F3
         Me.miEditionRechercherSuiv.Size = New System.Drawing.Size(230, 22)
@@ -325,7 +327,7 @@ Partial Class frmEditeur
         '
         'ssBarreEtat
         '
-        Me.ssBarreEtat.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ssTaille, Me.ssDate})
+        Me.ssBarreEtat.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ssTaille, Me.ssDate, Me.ssModificationSauvegardes})
         Me.ssBarreEtat.Location = New System.Drawing.Point(0, 379)
         Me.ssBarreEtat.Name = "ssBarreEtat"
         Me.ssBarreEtat.Size = New System.Drawing.Size(647, 22)
@@ -335,7 +337,7 @@ Partial Class frmEditeur
         'ssTaille
         '
         Me.ssTaille.Name = "ssTaille"
-        Me.ssTaille.Size = New System.Drawing.Size(538, 17)
+        Me.ssTaille.Size = New System.Drawing.Size(388, 17)
         Me.ssTaille.Spring = True
         Me.ssTaille.Text = "Taille : 0 octet"
         '
@@ -475,6 +477,13 @@ Partial Class frmEditeur
         Me.btnItalic.Name = "btnItalic"
         Me.btnItalic.Size = New System.Drawing.Size(23, 22)
         '
+        'ssModificationSauvegardes
+        '
+        Me.ssModificationSauvegardes.ForeColor = System.Drawing.Color.Red
+        Me.ssModificationSauvegardes.Name = "ssModificationSauvegardes"
+        Me.ssModificationSauvegardes.Size = New System.Drawing.Size(0, 17)
+        Me.ssModificationSauvegardes.Tag = ""
+        '
         'frmEditeur
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -559,4 +568,5 @@ Partial Class frmEditeur
     Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ssModificationSauvegardes As System.Windows.Forms.ToolStripStatusLabel
 End Class
