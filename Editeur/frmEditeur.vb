@@ -10,11 +10,12 @@ Imports System.IO   'Classe IO doit être ajoutée au projet pour
 'et StreamReader (lire un fichier texte)  
 
 Public Class frmEditeur
-    Dim mstrChaineRech As String      'Chaine recherchée dans le texte
-    Dim mblnTexteModifie As Boolean   'Le texte a été modifié ou non
-    Dim mdrReponse As DialogResult    'Réponse au message de modifications à enregistrer
-    Dim mblnAnnulerEnreg As Boolean   'Bouton Annuler sélectionné dans la boite de dialogue Enregistrer
-    Dim mstrNomFichier As String      'Nom du fichier sous lequel le texte est enregistré
+    Dim mstrChaineRech As String         'Chaine recherchée dans le texte
+    Dim mblnTexteModifie As Boolean      'Le texte a été modifié ou non
+    Dim mdrReponse As DialogResult       'Réponse au message de modifications à enregistrer
+    Dim mblnAnnulerEnreg As Boolean      'Bouton Annuler sélectionné dans la boite de dialogue Enregistrer
+    Dim mstrNomFichier As String         'Nom du fichier sous lequel le texte est enregistré
+    Dim mbRetourLigne As Boolean = True  'Propriete retour automatique
 
     'A chaque fois que le texte est modifié la variable mblnTexteModifie devient vraie.
     'Elle redeviendra fausse quand le texte aura été enregistré.
@@ -373,8 +374,7 @@ Public Class frmEditeur
 
 
     Private Sub btnUndoRedo_Click(sender As Object,
-                                e As EventArgs) Handles btnAnnuler.Click,
-                                                        btnRefaire.Click
+                                e As EventArgs) Handles btnAnnuler.Click
 
 
         Select Case sender.name.ToString
@@ -404,22 +404,20 @@ Public Class frmEditeur
 
     Private Sub btnRetourLigne_Click(sender As Object,
                                      e As EventArgs) Handles btnRetourLigne.Click,
-                                                             miFormatRetourAutomatique.CheckedChanged
+                                                             miFormatRetourAutomatique.Click
 
-        'Renvoi automatiquement à la ligne ***Ne pas oublié de mettre True à la propriété CheckOnClick pour que ça fonctionne***
+        'Renvoi automatiquement à la ligne
 
-        Dim RetourLigne As Boolean
-
-        Select Case RetourLigne
-            Case btnRetourLigne.Checked = True Or miFormatRetourAutomatique.Checked = True
-
-                btnRetourLigne.CheckOnClick = True
+            Select Case mbRetourLigne
+            Case False
+                mbRetourLigne = True
+                btnRetourLigne.Checked = True
                 miFormatRetourAutomatique.Checked = True
                 rtfZoneTexte.WordWrap = True
 
-            Case btnRetourLigne.Checked = False Or miFormatRetourAutomatique.Checked = False
-
-                btnRetourLigne.CheckOnClick = False
+            Case True
+                mbRetourLigne = False
+                btnRetourLigne.Checked = False
                 miFormatRetourAutomatique.Checked = False
                 rtfZoneTexte.WordWrap = False
 

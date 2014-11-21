@@ -451,6 +451,8 @@ Partial Class frmEditeur
         '
         'btnRetourLigne
         '
+        Me.btnRetourLigne.Checked = True
+        Me.btnRetourLigne.CheckState = System.Windows.Forms.CheckState.Checked
         Me.btnRetourLigne.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.btnRetourLigne.Image = CType(resources.GetObject("btnRetourLigne.Image"), System.Drawing.Image)
         Me.btnRetourLigne.ImageTransparentColor = System.Drawing.Color.Magenta

@@ -31,6 +31,7 @@ Partial Class frmDateHeure
         '
         'DateTimePicker1
         '
+        Me.DateTimePicker1.Enabled = False
         Me.DateTimePicker1.Location = New System.Drawing.Point(24, 161)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(185, 20)
@@ -41,7 +42,7 @@ Partial Class frmDateHeure
         Me.lbDateHeure.FormattingEnabled = True
         Me.lbDateHeure.Location = New System.Drawing.Point(24, 12)
         Me.lbDateHeure.Name = "lbDateHeure"
-        Me.lbDateHeure.Size = New System.Drawing.Size(185, 134)
+        Me.lbDateHeure.Size = New System.Drawing.Size(185, 173)
         Me.lbDateHeure.TabIndex = 1
         '
         'BtnAccept
