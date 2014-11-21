@@ -112,9 +112,8 @@ Public Class frmEditeur
             'il faut aussi afficher la boite de dialogue.
             If Me.Text <> mstrNomFichier Or sender Is miFichierEnregSous Then
                 .Title = "Enregistrer un fichier texte"         'titre de la boîte de dialogue
-                .DefaultExt = "txt"                             'extension par défaut 
-                '.Filter = "Fichier texte (*.txt)|*.txt|"         'contenu de la case Type de la boîte de dialogue
-                .Filter = "Fichier texte (*.txt;*.rtf)|*.txt;*.rtf" '********************************************************Caro******************* Ouvrir un fichier RTF 
+                .DefaultExt = "rtf"                             'extension par défaut 
+                .Filter = "Fichier Rich text (*.rtf)|*.rtf" '********************************************************Caro******************* Ouvrir un fichier RTF 
                 .OverwritePrompt = True                         'avertissement si le fichier existe déjà
                 If .ShowDialog = Windows.Forms.DialogResult.OK Then
                     Enregistrement()
@@ -291,22 +290,6 @@ Public Class frmEditeur
 
     End Sub
 
-    Private Sub miFichierApercu_Click(ByVal sender As Object,
-                                      ByVal e As EventArgs)
-
-        'un objet de type PrintDocument doit être affecté à la propriété .Document du contrôle PrintPreviewDialog
-        dlgApercu.Document = prtDocument
-        Try
-            dlgApercu.ShowDialog()
-        Catch ex As Exception
-            MessageBox.Show("La boite de dialogue Apercu avant impression n'a pu être affichée." & ControlChars.NewLine &
-                            "Message d'erreur du système : " & ControlChars.NewLine & ex.Message,
-                            "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop)
-        End Try
-
-        rtfZoneTexte.Focus()
-    End Sub
-
     Private Sub rtfZoneTexte_TextChanged(ByVal sender As Object,
                                          ByVal e As System.EventArgs) Handles rtfZoneTexte.TextChanged
 
@@ -317,6 +300,23 @@ Public Class frmEditeur
         End If
         ssModificationSauvegardes.Text = "Le texte a été modifié"
         mblnTexteModifie = True
+
+        'etat des bouttons refaire
+        If rtfZoneTexte.CanRedo = True Then
+            btnRefaire.Enabled = True
+            miEditionRefaire.Enabled = True
+        Else
+            btnRefaire.Enabled = False
+            miEditionRefaire.Enabled = False
+        End If
+        'etat des boutons annuler
+        If rtfZoneTexte.CanUndo = True Then
+            btnAnnuler.Enabled = True
+            miEditionAnnuler.Enabled = True
+        Else
+            btnAnnuler.Enabled = False
+            miEditionAnnuler.Enabled = False
+        End If
 
     End Sub
 
@@ -330,45 +330,51 @@ Public Class frmEditeur
 
     End Sub
 
-    Private Sub btnGrasItalic_Click(sender As Object,
+    Private Sub btnGras_Click(sender As Object,
                               e As EventArgs) Handles btnGras.Click,
-                                                      btnItalic.Click
-        Dim FontStyle As FontStyle
+                                                      miFormatStyleGras.Click
+        Dim fsStyle As FontStyle
 
-        FontStyle = (1 * Drawing.FontStyle.Bold)
-        FontStyle = (2 * Drawing.FontStyle.Italic)
-
-        'Marche paaaas
-    End Sub
-
-
-    Private Sub btnUndoRedo_Click(sender As Object,
-                                e As EventArgs) Handles btnAnnuler.Click
-
-
-        Select Case sender.name.ToString
-            Case "btnAnnuler"
-                rtfZoneTexte.Undo()
-            Case "btnRefaire"
-                rtfZoneTexte.Redo()
-        End Select
-
-
+        If rtfZoneTexte.SelectionFont.Bold Then
+            fsStyle = rtfZoneTexte.SelectionFont.Style And Not FontStyle.Bold
+        Else
+            fsStyle = rtfZoneTexte.SelectionFont.Style Or FontStyle.Bold
+        End If
+        rtfZoneTexte.SelectionFont = New Font(rtfZoneTexte.SelectionFont, fsStyle)
 
     End Sub
 
+    Private Sub btnItalic_Click(sender As Object,
+                                e As EventArgs) Handles btnItalic.Click,
+                                                        miFormatStyleIta.Click
+        Dim fsStyle As FontStyle
+
+        If rtfZoneTexte.SelectionFont.Italic Then
+            fsStyle = rtfZoneTexte.SelectionFont.Style And Not FontStyle.Italic
+        Else
+            fsStyle = rtfZoneTexte.SelectionFont.Style Or FontStyle.Italic
+        End If
+        rtfZoneTexte.SelectionFont = New Font(rtfZoneTexte.SelectionFont, fsStyle)
+
+    End Sub
+
+    Private Sub miFormatStyleSous_Click(sender As Object,
+                                e As EventArgs) Handles miFormatStyleSous.Click
+        Dim fsStyle As FontStyle
+
+        If rtfZoneTexte.SelectionFont.Underline Then
+            fsStyle = rtfZoneTexte.SelectionFont.Style And Not FontStyle.Underline
+        Else
+            fsStyle = rtfZoneTexte.SelectionFont.Style Or FontStyle.Underline
+        End If
+        rtfZoneTexte.SelectionFont = New Font(rtfZoneTexte.SelectionFont, fsStyle)
+
+    End Sub
 
     Private Sub miEditionHeureDate_Click(sender As Object,
                                          e As EventArgs) Handles miEditionHeureDate.Click
-
-        'Dim frmDateHeure As New frmDateHeure
-
-        'frmDateHeure.Show()
-
+        'Affiche le form pour inserer une date
         frmDateHeure.ShowDialog()
-
-
-
     End Sub
 
     Private Sub btnRetourLigne_Click(sender As Object,
@@ -377,7 +383,7 @@ Public Class frmEditeur
 
         'Renvoi automatiquement à la ligne
 
-            Select Case mbRetourLigne
+        Select Case mbRetourLigne
             Case False
                 mbRetourLigne = True
                 btnRetourLigne.Checked = True
@@ -400,7 +406,7 @@ Public Class frmEditeur
                                                               miEditionCopier.Click, btnCopier.Click,
                                                               miEditionColler.Click, btnColler.Click,
                                                               miEditionAnnuler.Click, btnAnnuler.Click,
-                                                              miEditionRefaire.Click, btnRefaire.click
+                                                              miEditionRefaire.Click, btnRefaire.Click
 
 
         Select Case sender.name.ToString
@@ -438,8 +444,6 @@ Public Class frmEditeur
             btnCouper.Enabled = False And miEditionCouper.Enabled = False
 
         End If
-
-        'btnCopier et Couper doivent être désactivé au démarrage ***À FAIRE
-
     End Sub
+
 End Class

@@ -63,6 +63,7 @@ Partial Class frmEditeur
         Me.ssBarreEtat = New System.Windows.Forms.StatusStrip()
         Me.ssTaille = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ssDate = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ssModificationSauvegardes = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsBarreOutils = New System.Windows.Forms.ToolStrip()
         Me.btnNouveau = New System.Windows.Forms.ToolStripButton()
         Me.btnOuvrir = New System.Windows.Forms.ToolStripButton()
@@ -80,7 +81,6 @@ Partial Class frmEditeur
         Me.btnRetourLigne = New System.Windows.Forms.ToolStripButton()
         Me.btnGras = New System.Windows.Forms.ToolStripButton()
         Me.btnItalic = New System.Windows.Forms.ToolStripButton()
-        Me.ssModificationSauvegardes = New System.Windows.Forms.ToolStripStatusLabel()
         Me.msBarreMenu.SuspendLayout()
         Me.ssBarreEtat.SuspendLayout()
         Me.tsBarreOutils.SuspendLayout()
@@ -337,7 +337,7 @@ Partial Class frmEditeur
         'ssTaille
         '
         Me.ssTaille.Name = "ssTaille"
-        Me.ssTaille.Size = New System.Drawing.Size(388, 17)
+        Me.ssTaille.Size = New System.Drawing.Size(538, 17)
         Me.ssTaille.Spring = True
         Me.ssTaille.Text = "Taille : 0 octet"
         '
@@ -346,6 +346,13 @@ Partial Class frmEditeur
         Me.ssDate.Name = "ssDate"
         Me.ssDate.Size = New System.Drawing.Size(94, 17)
         Me.ssDate.Text = "Date du système"
+        '
+        'ssModificationSauvegardes
+        '
+        Me.ssModificationSauvegardes.ForeColor = System.Drawing.Color.Red
+        Me.ssModificationSauvegardes.Name = "ssModificationSauvegardes"
+        Me.ssModificationSauvegardes.Size = New System.Drawing.Size(0, 17)
+        Me.ssModificationSauvegardes.Tag = ""
         '
         'tsBarreOutils
         '
@@ -404,6 +411,7 @@ Partial Class frmEditeur
         'btnCouper
         '
         Me.btnCouper.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnCouper.Enabled = False
         Me.btnCouper.Image = CType(resources.GetObject("btnCouper.Image"), System.Drawing.Image)
         Me.btnCouper.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnCouper.Name = "btnCouper"
@@ -412,6 +420,7 @@ Partial Class frmEditeur
         'btnCopier
         '
         Me.btnCopier.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.btnCopier.Enabled = False
         Me.btnCopier.Image = CType(resources.GetObject("btnCopier.Image"), System.Drawing.Image)
         Me.btnCopier.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnCopier.Name = "btnCopier"
@@ -476,13 +485,6 @@ Partial Class frmEditeur
         Me.btnItalic.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnItalic.Name = "btnItalic"
         Me.btnItalic.Size = New System.Drawing.Size(23, 22)
-        '
-        'ssModificationSauvegardes
-        '
-        Me.ssModificationSauvegardes.ForeColor = System.Drawing.Color.Red
-        Me.ssModificationSauvegardes.Name = "ssModificationSauvegardes"
-        Me.ssModificationSauvegardes.Size = New System.Drawing.Size(0, 17)
-        Me.ssModificationSauvegardes.Tag = ""
         '
         'frmEditeur
         '
