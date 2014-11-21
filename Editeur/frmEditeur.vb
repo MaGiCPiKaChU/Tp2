@@ -3,22 +3,22 @@
 ' ok                 Multiline = True
 ' ok                 ScrollBars = Both
 ' Louche.            Location = 0;0
-' ok                 WordWrap = False (texte non ajusté à la dimension de la fenêtre)
+' ok                 WordWrap = False (texte non ajusté à la dimension de la fenêtre) <-Renvoi à la ligne automatiquement
 
 Imports System.IO   'Classe IO doit être ajoutée au projet pour 
-                    'utiliser les classes StreamWriter (enregistrer un fichier texte)
-                    'et StreamReader (lire un fichier texte)  
+'utiliser les classes StreamWriter (enregistrer un fichier texte)
+'et StreamReader (lire un fichier texte)  
 
 Public Class frmEditeur
-  Dim mstrChaineRech As String      'Chaine recherchée dans le texte
-  Dim mblnTexteModifie As Boolean   'Le texte a été modifié ou non
-  Dim mdrReponse As DialogResult    'Réponse au message de modifications à enregistrer
-  Dim mblnAnnulerEnreg As Boolean   'Bouton Annuler sélectionné dans la boite de dialogue Enregistrer
-  Dim mstrNomFichier As String      'Nom du fichier sous lequel le texte est enregistré
+    Dim mstrChaineRech As String      'Chaine recherchée dans le texte
+    Dim mblnTexteModifie As Boolean   'Le texte a été modifié ou non
+    Dim mdrReponse As DialogResult    'Réponse au message de modifications à enregistrer
+    Dim mblnAnnulerEnreg As Boolean   'Bouton Annuler sélectionné dans la boite de dialogue Enregistrer
+    Dim mstrNomFichier As String      'Nom du fichier sous lequel le texte est enregistré
 
-  'A chaque fois que le texte est modifié la variable mblnTexteModifie devient vraie.
-  'Elle redeviendra fausse quand le texte aura été enregistré.
-  'Cette variable permet d'aviser l'utilisateur qu'une modification 
+    'A chaque fois que le texte est modifié la variable mblnTexteModifie devient vraie.
+    'Elle redeviendra fausse quand le texte aura été enregistré.
+    'Cette variable permet d'aviser l'utilisateur qu'une modification 
     'apportée au texte n'a pas été enregistrée.
 
     Private Sub Form_FormClosing(ByVal sender As Object,
@@ -39,8 +39,8 @@ Public Class frmEditeur
         End If
     End Sub
     'Gestionnaire commun aux choix Nouveau, Ouvrir et Quitter :
-  'Dans les 3 cas, il faut s'assurer que les dernières modifications
-  'apportées au texte ont été enregistrées.
+    'Dans les 3 cas, il faut s'assurer que les dernières modifications
+    'apportées au texte ont été enregistrées.
     'Prendre note que le code qui suit ne tient pas compte de la          ******** À FAIRE ******** L24 à 40
     'situation où l'utilisateur ferme le formulaire par le                ******** À FAIRE ********
     'bouton Fermer (X) de la barre de titre.                              ******** À FAIRE ********
@@ -245,6 +245,8 @@ Public Class frmEditeur
     Private Sub frmEditeur_Load(sender As Object,
                                 e As EventArgs) Handles MyBase.Load
 
+
+
     End Sub
 
     Private Sub miFormatCouleur_Click(sender As Object,
@@ -354,6 +356,8 @@ Public Class frmEditeur
 
         ssDate.Text = Date.Now.ToLongDateString
         rtfZoneTexte.Focus()
+
+
     End Sub
 
     Private Sub btnGrasItalic_Click(sender As Object,
@@ -400,9 +404,78 @@ Public Class frmEditeur
 
     Private Sub btnRetourLigne_Click(sender As Object,
                                      e As EventArgs) Handles btnRetourLigne.Click,
-                                                             miFormatRetourAutomatique.Click
+                                                             miFormatRetourAutomatique.CheckedChanged
 
-        'Environment.NewLine.
+        'Renvoi automatiquement à la ligne ***Ne pas oublié de mettre True à la propriété CheckOnClick pour que ça fonctionne***
+
+        Dim RetourLigne As Boolean
+
+        Select Case RetourLigne
+            Case btnRetourLigne.Checked = True Or miFormatRetourAutomatique.Checked = True
+
+                btnRetourLigne.CheckOnClick = True
+                miFormatRetourAutomatique.Checked = True
+                rtfZoneTexte.WordWrap = True
+
+            Case btnRetourLigne.Checked = False Or miFormatRetourAutomatique.Checked = False
+
+                btnRetourLigne.CheckOnClick = False
+                miFormatRetourAutomatique.Checked = False
+                rtfZoneTexte.WordWrap = False
+
+        End Select
+
+    End Sub
+
+
+    Private Sub ChoixDeMenu(sender As Object,
+                                      e As EventArgs) Handles miEditionCouper.Click, btnCouper.Click,
+                                                              miEditionCopier.Click, btnCopier.Click,
+                                                              miEditionColler.Click, btnColler.Click,
+                                                              miEditionAnnuler.Click, btnAnnuler.Click,
+                                                              miEditionRefaire.Click, btnRefaire.click
+
+
+        Select Case sender.name.ToString
+            Case "miEditionCopier", "btnCopier"
+                rtfZoneTexte.Copy()
+            Case "miEditionColler", "btnColler"
+                rtfZoneTexte.Paste()
+            Case "miEditionCouper", "btnCouper"
+                rtfZoneTexte.Cut()
+            Case "miEditionCouper", "btnCouper"
+                rtfZoneTexte.Cut()
+            Case "miEditionAnnuler", "btnAnnuler"
+                rtfZoneTexte.Undo()
+                rtfZoneTexte.ClearUndo()
+            Case "miEditionRefaire", "btnRefaire"
+                rtfZoneTexte.Redo()
+        End Select
+
+    End Sub
+
+    Private Sub btnColler_Click(sender As Object,
+                                e As EventArgs) Handles btnCopier.Click,
+                                                        miEditionCopier.Click,
+                                                        btnCouper.Click,
+                                                        miEditionCouper.Click
+
+
+
+        'Si du texte est sélectionné, le bouton Copier est activé
+        If rtfZoneTexte.SelectedText = True Then
+
+            btnCopier.Enabled = True And miEditionCopier.Enabled = True
+            btnCouper.Enabled = True And miEditionCouper.Enabled = True
+
+        ElseIf rtfZoneTexte.SelectedText = False Then
+
+            btnCopier.Enabled = False And miEditionCopier.Enabled = False
+            btnCouper.Enabled = False And miEditionCouper.Enabled = False
+
+        End If
+
+        'btnCopier et Couper doivent être désactivé au démarrage ***À FAIRE
 
     End Sub
 End Class
