@@ -454,21 +454,18 @@ Public Class frmEditeur
 
     End Sub
 
-    Private Sub btnColler_Click(sender As Object,
-                                e As EventArgs) Handles btnCopier.Click,
-                                                        miEditionCopier.Click,
-                                                        btnCouper.Click,
-                                                        miEditionCouper.Click
+    Private Sub AfficherChoixMenus(sender As Object,
+                                e As EventArgs) Handles rtfZoneTexte.SelectionChanged
 
 
 
         'Si du texte est sélectionné, le bouton Copier est activé
-        If rtfZoneTexte.SelectedText = True Then
+        If rtfZoneTexte.SelectedText <> "" Then
 
             btnCopier.Enabled = True And miEditionCopier.Enabled = True
             btnCouper.Enabled = True And miEditionCouper.Enabled = True
 
-        ElseIf rtfZoneTexte.SelectedText = False Then
+        ElseIf rtfZoneTexte.SelectedText = "" Then
 
             btnCopier.Enabled = False And miEditionCopier.Enabled = False
             btnCouper.Enabled = False And miEditionCouper.Enabled = False
